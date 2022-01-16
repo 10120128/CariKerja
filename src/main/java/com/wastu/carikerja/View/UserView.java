@@ -65,13 +65,9 @@ public class UserView {
                     Thread.sleep(1000);
                     textIO.getTextTerminal().resetToBookmark("password");
                     continue;
-                }
-                break;
-            }
 
-            String confirmPassword;
-            textIO.getTextTerminal().setBookmark("confirmPassword");
-            while (true) {
+                }
+                String confirmPassword;
                 confirmPassword = textIO.newStringInputReader()
                         .withMinLength(0)
                         .withInputMasking(true)
@@ -79,11 +75,13 @@ public class UserView {
                 if (!password.equals(confirmPassword)) {
                     textIO.getTextTerminal().println("Password tidak sama!");
                     Thread.sleep(1000);
-                    textIO.getTextTerminal().resetToBookmark("confirmPassword");
+                    textIO.getTextTerminal().resetToBookmark("password");
                     continue;
                 }
                 break;
             }
+
+
 
             try {
                 User user = new User(nama, email, password, UserRole.USER);
