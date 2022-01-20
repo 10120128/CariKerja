@@ -220,7 +220,9 @@ public class CariKerja {
      * @return Pilihan menu
      */
     private int getMainMenuSelection() {
+        textIO.getTextTerminal().setBookmark("main-menu");
         while (true) {
+            textIO.getTextTerminal().resetToBookmark("main-menu");
             textIO.getTextTerminal().println("Selamat Datang!\n");
             textIO.getTextTerminal().println("1. Login");
             textIO.getTextTerminal().println("2. Daftar");

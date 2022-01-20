@@ -12,7 +12,9 @@ public class UserMenuView extends BaseMenuView {
 
     @Override
     protected int getMenuSelection() {
+        textIO.getTextTerminal().setBookmark("user-menu");
         while (true) {
+            textIO.getTextTerminal().resetToBookmark("user-menu");
             super.viewHeader("Menu User");
             textIO.getTextTerminal().println("Selamat Datang " + SessionHelper.getInstance().getUser().getNama() + "!\n");
             textIO.getTextTerminal().println("1. Daftar Lowongan");

@@ -12,8 +12,9 @@ public class AdminMenuView extends BaseMenuView {
 
     @Override
     protected int getMenuSelection() {
-
+        textIO.getTextTerminal().setBookmark("admin-menu");
         while (true) {
+            textIO.getTextTerminal().resetToBookmark("admin-menu");
             viewHeader("Menu Admin");
             textIO.getTextTerminal().println("Selamat Datang " + SessionHelper.getInstance().getUser().getNama() + "!\n");
             textIO.getTextTerminal().println("1. Kelola User");
