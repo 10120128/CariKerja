@@ -1,12 +1,12 @@
-package com.wastu.carikerja.View;
+package com.wastu.carikerja.View.Menu;
 
 import org.beryx.textio.TextIO;
 
-public abstract class BaseView {
+public abstract class BaseMenuView {
     protected final TextIO textIO;
     protected String title;
 
-    protected BaseView(TextIO textIO, String title) {
+    protected BaseMenuView(TextIO textIO, String title) {
         this.textIO = textIO;
         this.title = title;
     }
@@ -16,7 +16,7 @@ public abstract class BaseView {
     }
 
     /**
-     * Menampilkan menu utama.
+     * Mendapatkan pilihan menu yang dipilih oleh user.
      * @return pilihan menu
      */
     protected abstract int getMenuSelection();

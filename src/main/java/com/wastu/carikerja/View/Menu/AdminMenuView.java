@@ -1,13 +1,13 @@
-package com.wastu.carikerja.View;
+package com.wastu.carikerja.View.Menu;
 
 import com.wastu.carikerja.Handlers.SessionHandler;
 import com.wastu.carikerja.Utils;
 import org.beryx.textio.TextIO;
 
-public class AdminView extends BaseView {
+public class AdminMenuView extends BaseMenuView {
     private static final String TITLE = "Admin";
 
-    public AdminView(TextIO textIO) {
+    public AdminMenuView(TextIO textIO) {
         super(textIO, TITLE);
     }
 

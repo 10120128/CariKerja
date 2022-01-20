@@ -5,20 +5,20 @@ import com.wastu.carikerja.Controllers.UserController;
 import com.wastu.carikerja.Enums.UserRole;
 import com.wastu.carikerja.Handlers.SessionHandler;
 import com.wastu.carikerja.Models.User;
-import com.wastu.carikerja.View.AdminView;
-import com.wastu.carikerja.View.UserView;
+import com.wastu.carikerja.View.Menu.AdminMenuView;
+import com.wastu.carikerja.View.Menu.UserMenuView;
 import org.beryx.textio.TextIO;
 
 public class CariKerja {
     private final TextIO textIO;
-    private final UserView userView;
-    private final AdminView adminView;
+    private final UserMenuView userView;
+    private final AdminMenuView adminView;
     private final UserController userController;
 
     public CariKerja(ConnectionSource connectionSource, TextIO textIO) throws Exception {
         this.textIO = textIO;
-        this.userView = new UserView(connectionSource, textIO);
-        this.adminView = new AdminView(textIO);
+        this.userView = new UserMenuView(connectionSource, textIO);
+        this.adminView = new AdminMenuView(textIO);
         this.userController = new UserController(connectionSource);
     }
 
