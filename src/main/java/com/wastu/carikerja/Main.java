@@ -2,25 +2,30 @@ package com.wastu.carikerja;
 
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
-import com.wastu.carikerja.View.UserView;
+import com.wastu.carikerja.Handlers.SessionHandler;
+import com.wastu.carikerja.Models.User;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
-import org.beryx.textio.swing.SwingTextTerminal;
-
-import java.awt.*;
 
 public class Main {
+
     public static void main(String[] args) throws Exception {
-        ConnectionSource connectionSource = new JdbcConnectionSource(Config.DB_URL, Config.DB_USERNAME, Config.DB_PASSWORD);
-        UserView userView = new UserView(connectionSource);
 
-        SwingTextTerminal mainTerm = new SwingTextTerminal();
-        mainTerm.init();
-        TextIO mainTextIO = new TextIO(mainTerm);
-        userView.tampilkanLogin(mainTextIO);
+        try {
+            ConnectionSource connectionSource = new JdbcConnectionSource(Config.DB_URL, Config.DB_USERNAME, Config.DB_PASSWORD);
+            TextIO mainTextIO = TextIoFactory.getTextIO();
+            CariKerja cariKerja = new CariKerja(connectionSource, mainTextIO);
+            cariKerja.run();
 
+            // Dispose komponen yang sudah tidak dipakai.
+            connectionSource.close();
+            mainTextIO.dispose();
 
-        connectionSource.close();
+        } catch (Exception e) {
+            // TODO: check connection exception
+            e.printStackTrace();
+        }
     }
+
 
 }

@@ -1,5 +1,7 @@
 package com.wastu.carikerja;
 
+import org.beryx.textio.TextIO;
+
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -26,6 +28,11 @@ public class Utils {
                 Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(email);
         return matcher.find();
+    }
+
+    public static void showMessageConfirmation(String errorMessage, TextIO textIO){
+        textIO.getTextTerminal().println(errorMessage);
+        textIO.newStringInputReader().withMinLength(0).read("Tekan enter untuk melanjutkan");
     }
 
 }
