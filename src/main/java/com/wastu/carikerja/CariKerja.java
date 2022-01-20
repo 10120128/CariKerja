@@ -33,17 +33,26 @@ public class CariKerja {
             textIO.getTextTerminal().resetToBookmark("menu");
             int selection = getMainMenuSelection();
             textIO.getTextTerminal().resetToBookmark("menu");
-            switch (selection) {
-                case 1:
-                    handleLoginView();
-                    break;
-                case 2:
-                    handleRegisterView();
-                    break;
-                case 3:
-                    handleExit();
-                    break;
+
+            // Panggil menu
+            try {
+                switch (selection) {
+                    case 1:
+                        handleLoginView();
+                        break;
+                    case 2:
+                        handleRegisterView();
+                        break;
+                    case 3:
+                        handleExit();
+                        break;
+                }
+            } catch (Exception e) {
+                // Jika terjadi kesalahan maka ulang kembali menu utama.
+                Utils.showMessageConfirmation("Terjadi kesalahan", textIO);
+                continue;
             }
+
 
             // Cek status login, apabila terdeteksi logout maka kembali ke menu utama.
             if (!SessionHandler.getInstance().isLogin()) {
@@ -85,7 +94,7 @@ public class CariKerja {
             while (true) {
                 email = textIO.newStringInputReader().withMinLength(0).read("Masukkan email: ");
 
-                if (!Utils.cekEmail(email)) {
+                if (!Utils.isEmail(email)) {
                     Utils.showMessageConfirmation("Email tidak valid", textIO);
                     textIO.getTextTerminal().resetToBookmark("email");
                     continue;
@@ -157,7 +166,7 @@ public class CariKerja {
             textIO.getTextTerminal().setBookmark("email");
             while (true) {
                 email = textIO.newStringInputReader().withMinLength(0).read("Masukkan email: ");
-                if (!Utils.cekEmail(email)) {
+                if (!Utils.isEmail(email)) {
                     Utils.showMessageConfirmation("Email tidak valid", textIO);
 
                     textIO.getTextTerminal().resetToBookmark("email");

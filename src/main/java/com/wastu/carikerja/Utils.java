@@ -23,7 +23,7 @@ public class Utils {
         }
     }
 
-    public static boolean cekEmail(String email) {
+    public static boolean isEmail(String email) {
         Pattern pattern =
                 Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(email);
@@ -32,7 +32,7 @@ public class Utils {
 
     public static void showMessageConfirmation(String errorMessage, TextIO textIO){
         textIO.getTextTerminal().println(errorMessage);
-        textIO.newStringInputReader().withMinLength(0).read("Tekan enter untuk melanjutkan");
+        textIO.newStringInputReader().withMinLength(0).read("Tekan <enter> untuk melanjutkan.");
     }
 
 }

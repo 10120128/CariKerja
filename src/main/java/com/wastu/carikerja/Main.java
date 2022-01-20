@@ -2,8 +2,6 @@ package com.wastu.carikerja;
 
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
-import com.wastu.carikerja.Handlers.SessionHandler;
-import com.wastu.carikerja.Models.User;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 
