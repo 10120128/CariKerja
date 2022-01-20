@@ -4,7 +4,8 @@ import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
-import com.wastu.carikerja.Handlers.SessionHandler;
+import com.wastu.carikerja.Helpers.DatabaseHelper;
+import com.wastu.carikerja.Helpers.SessionHelper;
 import com.wastu.carikerja.Models.User;
 import com.wastu.carikerja.Utils;
 
@@ -15,7 +16,8 @@ import java.util.Objects;
 public class UserController {
     private final Dao<User, Long> userDao;
 
-    public UserController(ConnectionSource connectionSource) throws SQLException {
+    public UserController() throws SQLException {
+        ConnectionSource connectionSource = DatabaseHelper.getInstance().getConnectionSource();
         this.userDao = DaoManager.createDao(connectionSource, User.class);
         TableUtils.createTableIfNotExists(connectionSource, User.class);
     }
@@ -50,7 +52,7 @@ public class UserController {
         userDao.create(user);
 
         // Save ke session
-        SessionHandler.getInstance().setUser(user);
+        SessionHelper.getInstance().setUser(user);
     }
 
     public void login(String email, String password) throws SQLException, Exception {
@@ -63,6 +65,6 @@ public class UserController {
             throw new Exception("Password salah");
         }
 
-        SessionHandler.getInstance().setUser(user);
+        SessionHelper.getInstance().setUser(user);
     }
 }

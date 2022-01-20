@@ -1,13 +1,13 @@
 package com.wastu.carikerja;
 
-import com.j256.ormlite.support.ConnectionSource;
 import com.wastu.carikerja.Controllers.UserController;
 import com.wastu.carikerja.Enums.UserRole;
-import com.wastu.carikerja.Handlers.SessionHandler;
+import com.wastu.carikerja.Helpers.SessionHelper;
 import com.wastu.carikerja.Models.User;
 import com.wastu.carikerja.View.Menu.AdminMenuView;
 import com.wastu.carikerja.View.Menu.UserMenuView;
 import org.beryx.textio.TextIO;
+import org.beryx.textio.TextIoFactory;
 
 public class CariKerja {
     private final TextIO textIO;
@@ -15,11 +15,11 @@ public class CariKerja {
     private final AdminMenuView adminView;
     private final UserController userController;
 
-    public CariKerja(ConnectionSource connectionSource, TextIO textIO) throws Exception {
-        this.textIO = textIO;
-        this.userView = new UserMenuView(connectionSource, textIO);
-        this.adminView = new AdminMenuView(textIO);
-        this.userController = new UserController(connectionSource);
+    public CariKerja(UserMenuView userMenuView, AdminMenuView adminMenuView, UserController userController) {
+        this.textIO = TextIoFactory.getTextIO();
+        this.userView = userMenuView;
+        this.adminView = adminMenuView;
+        this.userController = userController;
     }
 
     /**
@@ -55,7 +55,7 @@ public class CariKerja {
 
 
             // Cek status login, apabila terdeteksi logout maka kembali ke menu utama.
-            if (!SessionHandler.getInstance().isLogin()) {
+            if (!SessionHelper.getInstance().isLogin()) {
                 continue;
             }
 
@@ -70,7 +70,7 @@ public class CariKerja {
 
     private void handleLoginView() throws Exception {
         showLogin();
-        User user = SessionHandler.getInstance().getUser();
+        User user = SessionHelper.getInstance().getUser();
 
         // Tampilkan menu sesuai masing-masing role.
         if (user.getRole() == UserRole.ADMIN) {
@@ -130,7 +130,7 @@ public class CariKerja {
 
     private void handleRegisterView() throws Exception {
         showRegister();
-        User user = SessionHandler.getInstance().getUser();
+        User user = SessionHelper.getInstance().getUser();
 
         // Tampilkan menu sesuai masing-masing role.
         if (user.getRole() == UserRole.ADMIN) {

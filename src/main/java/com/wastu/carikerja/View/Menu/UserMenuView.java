@@ -1,27 +1,20 @@
 package com.wastu.carikerja.View.Menu;
 
-import com.j256.ormlite.support.ConnectionSource;
-import com.wastu.carikerja.Handlers.SessionHandler;
-import com.wastu.carikerja.Controllers.UserController;
+import com.wastu.carikerja.Helpers.SessionHelper;
 import com.wastu.carikerja.Utils;
-import org.beryx.textio.TextIO;
-
-import java.sql.SQLException;
 
 public class UserMenuView extends BaseMenuView {
     private static final String TITLE = "User";
-    private final UserController controller;
 
-    public UserMenuView(ConnectionSource source, TextIO textIO) throws SQLException {
-        super(textIO, TITLE);
-        controller = new UserController(source);
+    public UserMenuView() {
+        super(TITLE);
     }
 
     @Override
     protected int getMenuSelection() {
         while (true) {
             super.viewHeader("Menu User");
-            textIO.getTextTerminal().println("Selamat Datang " + SessionHandler.getInstance().getUser().getNama() + "!\n");
+            textIO.getTextTerminal().println("Selamat Datang " + SessionHelper.getInstance().getUser().getNama() + "!\n");
             textIO.getTextTerminal().println("1. Daftar Lowongan");
             textIO.getTextTerminal().println("2. Cari Lowongan");
             textIO.getTextTerminal().println("3. Filter Lowongan (Kategori)");
@@ -59,7 +52,7 @@ public class UserMenuView extends BaseMenuView {
                 // TODO: Filter lowongan
                 throw new Exception("Filter lowongan belum tersedia");
             case 4:
-                SessionHandler.getInstance().logout();
+                SessionHelper.getInstance().logout();
                 break;
             default:
                 throw new Exception("Menu tidak tersedia");

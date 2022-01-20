@@ -1,14 +1,13 @@
 package com.wastu.carikerja.View.Menu;
 
-import com.wastu.carikerja.Handlers.SessionHandler;
+import com.wastu.carikerja.Helpers.SessionHelper;
 import com.wastu.carikerja.Utils;
-import org.beryx.textio.TextIO;
 
 public class AdminMenuView extends BaseMenuView {
     private static final String TITLE = "Admin";
 
-    public AdminMenuView(TextIO textIO) {
-        super(textIO, TITLE);
+    public AdminMenuView() {
+        super(TITLE);
     }
 
     @Override
@@ -16,7 +15,7 @@ public class AdminMenuView extends BaseMenuView {
 
         while (true) {
             viewHeader("Menu Admin");
-            textIO.getTextTerminal().println("Selamat Datang " + SessionHandler.getInstance().getUser().getNama() + "!\n");
+            textIO.getTextTerminal().println("Selamat Datang " + SessionHelper.getInstance().getUser().getNama() + "!\n");
             textIO.getTextTerminal().println("1. Kelola User");
             textIO.getTextTerminal().println("2. Kelola Pekerjaan");
             textIO.getTextTerminal().println("3. Kelola Lowongan");
@@ -54,7 +53,7 @@ public class AdminMenuView extends BaseMenuView {
                 // TODO: Kelola lowongan
                 throw new Exception("Kelola Lowongan belum tersedia");
             case 4:
-                SessionHandler.getInstance().logout();
+                SessionHelper.getInstance().logout();
                 break;
             default:
                 throw new Exception("Menu tidak tersedia");

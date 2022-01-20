@@ -1,18 +1,22 @@
-package com.wastu.carikerja.Handlers;
+package com.wastu.carikerja.Helpers;
 
 import com.wastu.carikerja.Enums.UserRole;
 import com.wastu.carikerja.Models.User;
 
-public class SessionHandler {
-    private static SessionHandler instance;
+public class SessionHelper {
+    private static SessionHelper instance;
     private User user;
 
-    public static SessionHandler getInstance() {
+    private SessionHelper() {
+    }
+
+    public static synchronized SessionHelper getInstance() {
         if (instance == null) {
-            instance = new SessionHandler();
+            instance = new SessionHelper();
         }
         return instance;
     }
+
     public boolean isLogin() {
         return user != null;
     }
@@ -28,11 +32,11 @@ public class SessionHandler {
         return user;
     }
 
-    public void logout(){
+    public void logout() {
         user = null;
     }
 
-    public boolean isAdmin(){
+    public boolean isAdmin() {
         return getUser().getRole() == UserRole.ADMIN;
     }
 }
