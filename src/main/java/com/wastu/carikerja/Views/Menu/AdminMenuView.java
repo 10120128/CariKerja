@@ -2,6 +2,7 @@ package com.wastu.carikerja.Views.Menu;
 
 import com.wastu.carikerja.Helpers.SessionHelper;
 import com.wastu.carikerja.Utils;
+import com.wastu.carikerja.Views.Submenu.ManageKategoriSubmenu;
 import com.wastu.carikerja.Views.Submenu.ManageLowonganSubmenu;
 import com.wastu.carikerja.Views.Submenu.ManageUserSubmenu;
 import com.wastu.carikerja.Views.View;
@@ -64,8 +65,7 @@ public class AdminMenuView implements View {
             case 2:
                 ManageLowonganSubmenu.getInstance(this).show();
             case 3:
-                // TODO: Kelola kategori
-                throw new Exception("Kelola Kategori belum tersedia");
+                ManageKategoriSubmenu.getInstance(this).show();
             case 4:
                 SessionHelper.getInstance().logout();
                 break;
