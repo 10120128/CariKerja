@@ -8,6 +8,7 @@ import com.wastu.carikerja.Helpers.DatabaseHelper;
 import com.wastu.carikerja.Models.Kategori;
 
 import java.sql.SQLException;
+import java.util.Comparator;
 import java.util.List;
 
 public class KategoriController {
@@ -36,7 +37,7 @@ public class KategoriController {
     }
 
     public List<Kategori> list() throws SQLException {
-        return kategoriDao.queryForAll();
+        return kategoriDao.queryForAll().stream().sorted(Comparator.comparing(Kategori::getId)).collect(java.util.stream.Collectors.toList());
     }
 
     public void update(long id, String nama) throws SQLException {
