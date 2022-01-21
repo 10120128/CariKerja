@@ -17,7 +17,7 @@ public class Main {
             TextIO mainTextIO = TextIoFactory.getTextIO();
 
             CariKerja cariKerja = new CariKerja();
-            cariKerja.run();
+            cariKerja.show();
 
             // Dispose komponen yang sudah tidak dipakai.
             DatabaseHelper.getInstance().closeConnectionSource();

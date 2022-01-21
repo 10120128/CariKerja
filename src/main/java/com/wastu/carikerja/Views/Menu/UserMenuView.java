@@ -11,14 +11,16 @@ import org.beryx.textio.TextIoFactory;
 public class UserMenuView implements View {
     private static UserMenuView instance;
     private final TextIO textIO;
+    private final View privateView;
 
-    private UserMenuView() {
+    private UserMenuView(View previousView) {
         textIO = TextIoFactory.getTextIO();
+        this.privateView = previousView;
     }
 
-    public static synchronized UserMenuView getInstance() {
+    public static synchronized UserMenuView getInstance(View previousView) {
         if (instance == null) {
-            instance = new UserMenuView();
+            instance = new UserMenuView(previousView);
         }
         return instance;
     }
@@ -65,6 +67,7 @@ public class UserMenuView implements View {
                 FilterLowonganByKategoriView.getInstance(this).show();
             case 4:
                 SessionHelper.getInstance().logout();
+                privateView.show();
                 break;
             default:
                 throw new Exception("Menu tidak tersedia");

@@ -12,7 +12,7 @@ import org.beryx.textio.TextIoFactory;
 
 import java.sql.SQLException;
 
-public class CariKerja {
+public class CariKerja implements View{
     private final TextIO textIO;
     private final UserMenuView userView;
     private final AdminMenuView adminView;
@@ -20,7 +20,7 @@ public class CariKerja {
 
     public CariKerja() throws SQLException {
         this.textIO = TextIoFactory.getTextIO();
-        this.userView = UserMenuView.getInstance();
+        this.userView = UserMenuView.getInstance(this);
         this.adminView = AdminMenuView.getInstance();
         this.userController = UserController.getInstance();
     }
@@ -30,7 +30,9 @@ public class CariKerja {
      *
      * @throws Exception Mengembalikan exception jika terjadi kesalahan.
      */
-    public void run() throws Exception {
+    @Override
+    public void show() throws Exception {
+
         textIO.getTextTerminal().setBookmark("menu");
         while (true) {
             textIO.getTextTerminal().resetToBookmark("menu");
@@ -240,4 +242,6 @@ public class CariKerja {
             return menu;
         }
     }
+
+
 }

@@ -90,6 +90,7 @@ public class FilterLowonganByKategoriView implements View {
             // Jika lowongan ditemukan, tampilkan detail lowongan
             textIO.getTextTerminal().resetToBookmark("filter-lowongan");
             DetailLowonganView.getInstance(this, lowongan).show();
+            break;
         }
 
         textIO.newStringInputReader().withMinLength(0).read("Tekan <enter> untuk kembali.");
