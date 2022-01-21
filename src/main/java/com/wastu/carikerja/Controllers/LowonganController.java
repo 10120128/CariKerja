@@ -60,6 +60,11 @@ public class LowonganController {
     }
 
 
+    public List<Lowongan> listByKategori(Kategori kategori) throws SQLException {
+        return lowonganDao.queryForEq("kategori_id", kategori.getId());
+    }
+
+
     public void update(Lowongan lowongan) throws SQLException {
         lowonganDao.update(lowongan);
     }

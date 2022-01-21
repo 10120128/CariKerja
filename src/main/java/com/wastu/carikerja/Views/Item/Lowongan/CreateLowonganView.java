@@ -1,24 +1,17 @@
 package com.wastu.carikerja.Views.Item.Lowongan;
 
-import com.github.freva.asciitable.AsciiTable;
-import com.github.freva.asciitable.Column;
-import com.github.freva.asciitable.HorizontalAlign;
 import com.wastu.carikerja.Controllers.KategoriController;
 import com.wastu.carikerja.Controllers.LowonganController;
 import com.wastu.carikerja.Models.Kategori;
 import com.wastu.carikerja.Models.Lowongan;
-import com.wastu.carikerja.Models.User;
 import com.wastu.carikerja.Utils;
+import com.wastu.carikerja.Views.ViewUtils;
 import com.wastu.carikerja.Views.View;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
-import org.beryx.textio.swing.SwingTextTerminal;
 
-import java.awt.*;
 import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 
 public class CreateLowonganView implements View {
     private static CreateLowonganView instance;
@@ -39,50 +32,6 @@ public class CreateLowonganView implements View {
             instance = new CreateLowonganView(previousView);
         }
         return instance;
-    }
-
-    /**
-     * Memunculkan terminal baru agar user dapat memilih kategori. Akan mengembalikan objek kategori yang dipilih.
-     *
-     * @return Kategori
-     */
-    private Kategori showSelectKategori() throws Exception {
-        SwingTextTerminal childTerm = new SwingTextTerminal();
-        childTerm.init();
-        TextIO childTextIO = new TextIO(childTerm);
-
-        // Show Kategori with table
-        List<Kategori> listKategori = kategoriController.list();
-        childTextIO.getTextTerminal().println(AsciiTable.getTable(listKategori, Arrays.asList(
-                new Column().header("Id").headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.LEFT).with(kategori -> Long.toString(kategori.getId())),
-                new Column().header("Nama").headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.LEFT).with(Kategori::getNama))));
-
-        // Input kategori id
-        long id;
-        childTextIO.getTextTerminal().setBookmark("create-lowongan-kategori-id");
-        while (true) {
-            childTextIO.getTextTerminal().resetToBookmark("create-lowongan-kategori-id");
-            String idStr = childTextIO.newStringInputReader().withMinLength(0).read("Masukkan id kategori yang dipilih: ");
-            if (idStr.isEmpty()) {
-                Utils.showMessageConfirmation("ID tidak boleh kosong", childTextIO);
-                continue;
-            }
-            if (!Utils.isLong(idStr)) {
-                Utils.showMessageConfirmation("ID harus berupa angka", childTextIO);
-                continue;
-            }
-            if (!KategoriController.getInstance().isExists(Long.parseLong(idStr))) {
-                Utils.showMessageConfirmation("ID tidak ditemukan", childTextIO);
-                continue;
-            }
-            id = Long.parseLong(idStr);
-            break;
-        }
-        Kategori kategori = KategoriController.getInstance().get(id);
-        Utils.showMessageConfirmation("Kategori berhasil dipilih.", childTextIO);
-        childTerm.dispose();
-
-        return kategori;
     }
 
     /**
@@ -163,7 +112,7 @@ public class CreateLowonganView implements View {
                     break;
                 }
                 textIO.getTextTerminal().println("Mengarahkan ke menu pilih kategori...");
-                kategori = showSelectKategori();
+                kategori = ViewUtils.showSelectKategori();
             }
 
             Date tanggalPosting = new Date();
