@@ -1,8 +1,8 @@
 package com.wastu.carikerja.Views.Submenu;
 
 import com.wastu.carikerja.Utils;
-import com.wastu.carikerja.Views.Item.CreateKategoriView;
-import com.wastu.carikerja.Views.Item.ListKategoriView;
+import com.wastu.carikerja.Views.Item.Kategori.CreateKategoriView;
+import com.wastu.carikerja.Views.Item.Kategori.ListKategoriView;
 import com.wastu.carikerja.Views.View;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;

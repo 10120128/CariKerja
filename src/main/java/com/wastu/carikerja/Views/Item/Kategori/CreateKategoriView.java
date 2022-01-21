@@ -1,4 +1,4 @@
-package com.wastu.carikerja.Views.Item;
+package com.wastu.carikerja.Views.Item.Kategori;
 
 import com.wastu.carikerja.Controllers.KategoriController;
 import com.wastu.carikerja.Models.Kategori;

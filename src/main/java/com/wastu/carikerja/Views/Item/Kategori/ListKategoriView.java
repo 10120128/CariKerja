@@ -1,11 +1,10 @@
-package com.wastu.carikerja.Views.Item;
+package com.wastu.carikerja.Views.Item.Kategori;
 
 import com.github.freva.asciitable.AsciiTable;
 import com.github.freva.asciitable.Column;
 import com.github.freva.asciitable.HorizontalAlign;
 import com.wastu.carikerja.Controllers.KategoriController;
 import com.wastu.carikerja.Models.Kategori;
-import com.wastu.carikerja.Models.User;
 import com.wastu.carikerja.Views.View;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;

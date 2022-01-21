@@ -1,9 +1,9 @@
 package com.wastu.carikerja.Views.Submenu;
 
 import com.wastu.carikerja.Utils;
-import com.wastu.carikerja.Views.Item.DeleteUserView;
-import com.wastu.carikerja.Views.Item.ListUserView;
-import com.wastu.carikerja.Views.Item.UpdateUserView;
+import com.wastu.carikerja.Views.Item.User.DeleteUserView;
+import com.wastu.carikerja.Views.Item.User.ListUserView;
+import com.wastu.carikerja.Views.Item.User.UpdateUserView;
 import com.wastu.carikerja.Views.View;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
