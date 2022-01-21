@@ -3,6 +3,7 @@ package com.wastu.carikerja.Views.Submenu;
 import com.wastu.carikerja.Utils;
 import com.wastu.carikerja.Views.Item.Kategori.CreateKategoriView;
 import com.wastu.carikerja.Views.Item.Kategori.ListKategoriView;
+import com.wastu.carikerja.Views.Item.Kategori.UpdateKategoriView;
 import com.wastu.carikerja.Views.View;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
@@ -65,8 +66,7 @@ public class ManageKategoriSubmenu implements View {
             case 2:
                 CreateKategoriView.getInstance(this).show();
             case 3:
-                //TODO: Edit kategori
-                throw new Exception("Not implemented yet");
+                UpdateKategoriView.getInstance(this).show();
             case 4:
                 //TODO: Hapus kategori
                 throw new Exception("Not implemented yet");
