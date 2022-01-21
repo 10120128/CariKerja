@@ -2,6 +2,7 @@ package com.wastu.carikerja.Views.Submenu;
 
 import com.wastu.carikerja.Utils;
 import com.wastu.carikerja.Views.Item.Lowongan.CreateLowonganView;
+import com.wastu.carikerja.Views.Item.Lowongan.DeleteLowonganView;
 import com.wastu.carikerja.Views.Item.Lowongan.ListLowonganView;
 import com.wastu.carikerja.Views.Item.Lowongan.UpdateLowonganView;
 import com.wastu.carikerja.Views.View;
@@ -68,8 +69,7 @@ public class ManageLowonganSubmenu implements View {
             case 3:
                 UpdateLowonganView.getInstance(this).show();
             case 4:
-                //TODO: Hapus lowongan
-                throw new Exception("Not implemented yet");
+                DeleteLowonganView.getInstance(this).show();
             case 5:
                 previousView.show();
                 break;

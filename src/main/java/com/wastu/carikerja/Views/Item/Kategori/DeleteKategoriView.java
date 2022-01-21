@@ -29,7 +29,7 @@ public class DeleteKategoriView implements View {
     }
 
     /**
-     * Menampilkan view untuk menghapus kategori baru.
+     * Menampilkan view untuk menghapus kategori.
      *
      * <p>Aplikasi meminta inputan id kategori yang akan dihapus, jika id kategori ditemukan maka akan dihapus.
      *
