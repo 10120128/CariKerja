@@ -22,7 +22,7 @@ import java.util.List;
 
 public class UpdateLowonganView implements View {
     private static UpdateLowonganView instance;
-    private final View previousView;
+    private View previousView;
     private final LowonganController lowonganController;
     private final KategoriController kategoriController;
     private final TextIO textIO;
@@ -37,6 +37,8 @@ public class UpdateLowonganView implements View {
     public static synchronized UpdateLowonganView getInstance(View previousView) throws SQLException {
         if (instance == null) {
             instance = new UpdateLowonganView(previousView);
+        }else{
+            instance.previousView = previousView;
         }
         return instance;
     }

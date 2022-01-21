@@ -18,7 +18,7 @@ import java.util.List;
 
 public class FilterLowonganByKategoriView implements View {
     private static FilterLowonganByKategoriView instance;
-    private final View previousView;
+    private View previousView;
     private final LowonganController lowonganController;
     private final TextIO textIO;
 
@@ -31,6 +31,8 @@ public class FilterLowonganByKategoriView implements View {
     public static synchronized FilterLowonganByKategoriView getInstance(View previousView) throws SQLException {
         if (instance == null) {
             instance = new FilterLowonganByKategoriView(previousView);
+        }else{
+            instance.previousView = previousView;
         }
         return instance;
     }

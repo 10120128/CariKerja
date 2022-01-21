@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 public class UpdateKategoriView implements View {
     private static UpdateKategoriView instance;
-    private final View previousView;
+    private View previousView;
     private final KategoriController kategoriController;
     private final TextIO textIO;
 
@@ -24,6 +24,8 @@ public class UpdateKategoriView implements View {
     public static synchronized UpdateKategoriView getInstance(View previousView) throws SQLException {
         if (instance == null) {
             instance = new UpdateKategoriView(previousView);
+        }else{
+            instance.previousView = previousView;
         }
         return instance;
     }

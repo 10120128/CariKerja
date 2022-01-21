@@ -15,7 +15,7 @@ public class LoginView implements View {
     private static LoginView instance;
     private final TextIO textIO;
     private final UserController userController;
-    private final View previousView;
+    private View previousView;
     
     private LoginView(View previousView) throws SQLException {
         textIO = TextIoFactory.getTextIO();
@@ -26,6 +26,8 @@ public class LoginView implements View {
     public static LoginView getInstance(View previousView) throws SQLException {
         if(instance == null) {
             instance = new LoginView(previousView);
+        }else{
+            instance.previousView = previousView;
         }
         return instance;
     }

@@ -12,7 +12,7 @@ import org.beryx.textio.TextIoFactory;
 public class UserMenuView implements View {
     private static UserMenuView instance;
     private final TextIO textIO;
-    private final View previousView;
+    private View previousView;
 
     private UserMenuView(View previousView) {
         textIO = TextIoFactory.getTextIO();
@@ -22,6 +22,8 @@ public class UserMenuView implements View {
     public static synchronized UserMenuView getInstance(View previousView) {
         if (instance == null) {
             instance = new UserMenuView(previousView);
+        }else{
+            instance.previousView = previousView;
         }
         return instance;
     }

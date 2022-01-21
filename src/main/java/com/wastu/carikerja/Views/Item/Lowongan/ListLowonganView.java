@@ -17,7 +17,7 @@ import java.util.Locale;
 
 public class ListLowonganView implements View {
     private static ListLowonganView instance;
-    private final View previousView;
+    private View previousView;
     private final LowonganController lowonganController;
     private final TextIO textIO;
 
@@ -30,6 +30,8 @@ public class ListLowonganView implements View {
     public static synchronized ListLowonganView getInstance(View previousView) throws SQLException {
         if (instance == null) {
             instance = new ListLowonganView(previousView);
+        }else{
+            instance.previousView = previousView;
         }
         return instance;
     }

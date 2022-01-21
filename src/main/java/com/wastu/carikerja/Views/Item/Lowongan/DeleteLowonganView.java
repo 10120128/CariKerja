@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 public class DeleteLowonganView implements View {
     private static DeleteLowonganView instance;
-    private final View previousView;
+    private View previousView;
     private final LowonganController lowonganController;
     private final TextIO textIO;
 
@@ -24,6 +24,8 @@ public class DeleteLowonganView implements View {
     public static synchronized DeleteLowonganView getInstance(View previousView) throws SQLException {
         if (instance == null) {
             instance = new DeleteLowonganView(previousView);
+        }else{
+            instance.previousView = previousView;
         }
         return instance;
     }

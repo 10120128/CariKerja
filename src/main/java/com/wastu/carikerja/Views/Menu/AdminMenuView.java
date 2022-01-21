@@ -13,7 +13,7 @@ import org.beryx.textio.TextIoFactory;
 public class AdminMenuView implements View {
     private static AdminMenuView instance;
     private final TextIO textIO;
-    private final View previousView;
+    private View previousView;
 
     private AdminMenuView(View previousView) {
         textIO = TextIoFactory.getTextIO();
@@ -23,6 +23,8 @@ public class AdminMenuView implements View {
     public static synchronized AdminMenuView getInstance(View previousView) {
         if (instance == null) {
             instance = new AdminMenuView(previousView);
+        }else{
+            instance.previousView = previousView;
         }
         return instance;
     }

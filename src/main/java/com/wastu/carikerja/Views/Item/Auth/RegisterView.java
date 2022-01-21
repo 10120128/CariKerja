@@ -14,7 +14,7 @@ import java.sql.SQLException;
 public class RegisterView implements View {
     private final TextIO textIO;
     private static RegisterView instance;
-    private final View previousView;
+    private View previousView;
     private final UserController userController;
 
     private RegisterView(View previousView) throws SQLException {
@@ -26,6 +26,8 @@ public class RegisterView implements View {
     public static synchronized RegisterView getInstance(View previousView) throws SQLException {
         if(instance == null){
             instance = new RegisterView(previousView);
+        }else{
+            instance.previousView = previousView;
         }
         return instance;
     }

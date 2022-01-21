@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 public class CreateKategoriView implements View {
     private static CreateKategoriView instance;
-    private final View previousView;
+    private View previousView;
     private final KategoriController kategoriController;
     private final TextIO textIO;
 
@@ -24,6 +24,8 @@ public class CreateKategoriView implements View {
     public static synchronized CreateKategoriView getInstance(View previousView) throws SQLException {
         if (instance == null) {
             instance = new CreateKategoriView(previousView);
+        }else{
+            instance.previousView = previousView;
         }
         return instance;
     }

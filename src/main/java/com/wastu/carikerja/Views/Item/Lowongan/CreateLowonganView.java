@@ -15,7 +15,7 @@ import java.util.Date;
 
 public class CreateLowonganView implements View {
     private static CreateLowonganView instance;
-    private final View previousView;
+    private View previousView;
     private final LowonganController lowonganController;
     private final KategoriController kategoriController;
     private final TextIO textIO;
@@ -30,6 +30,8 @@ public class CreateLowonganView implements View {
     public static synchronized CreateLowonganView getInstance(View previousView) throws SQLException {
         if (instance == null) {
             instance = new CreateLowonganView(previousView);
+        }else{
+            instance.previousView = previousView;
         }
         return instance;
     }

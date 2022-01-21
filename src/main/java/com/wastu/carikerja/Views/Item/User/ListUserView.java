@@ -15,7 +15,7 @@ import java.util.List;
 
 public class ListUserView implements View {
     private static ListUserView instance;
-    private final View previousView;
+    private View previousView;
     private final UserController userController;
     private final TextIO textIO;
 
@@ -28,6 +28,8 @@ public class ListUserView implements View {
     public static synchronized ListUserView getInstance(View previousView) throws SQLException {
         if (instance == null) {
             instance = new ListUserView(previousView);
+        }else{
+            instance.previousView = previousView;
         }
         return instance;
     }
