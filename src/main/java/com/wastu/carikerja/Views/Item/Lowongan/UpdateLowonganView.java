@@ -239,7 +239,7 @@ public class UpdateLowonganView implements View {
                 continue;
             }
 
-            lowonganController.create(lowongan);
+            lowonganController.update(lowongan);
             Utils.showMessageConfirmation("Kategori berhasil diubah", textIO);
             break;
         }
