@@ -2,6 +2,7 @@ package com.wastu.carikerja.Views.Submenu;
 
 import com.wastu.carikerja.Utils;
 import com.wastu.carikerja.Views.Item.ListUserView;
+import com.wastu.carikerja.Views.Item.UpdateUserView;
 import com.wastu.carikerja.Views.View;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
@@ -60,8 +61,7 @@ public class ManageUserSubmenu implements View {
             case 1:
                 ListUserView.getInstance(this).show();
             case 2:
-                // TODO: Ubah user
-                throw new Exception("Ubah user belum tersedia");
+                UpdateUserView.getInstance(this).show();
             case 3:
                 // TODO: Hapus user
                 throw new Exception("Hapus user");

@@ -4,6 +4,7 @@ import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+import com.wastu.carikerja.Enums.UserRole;
 import com.wastu.carikerja.Helpers.DatabaseHelper;
 import com.wastu.carikerja.Helpers.SessionHelper;
 import com.wastu.carikerja.Models.User;
@@ -42,10 +43,11 @@ public class UserController {
         return userDao.queryForAll();
     }
 
-    public void edit(long id, String nama, String email) throws SQLException {
+    public void update(long id, String nama, String email, UserRole role) throws SQLException {
         User user = userDao.queryForId(id);
         user.setNama(nama);
         user.setEmail(email);
+        user.setRole(role);
         userDao.update(user);
     }
 
@@ -74,5 +76,9 @@ public class UserController {
         }
 
         SessionHelper.getInstance().setUser(user);
+    }
+
+    public boolean isUserExists(long id) throws SQLException {
+        return userDao.queryForId(id) != null;
     }
 }

@@ -35,4 +35,16 @@ public class Utils {
         textIO.newStringInputReader().withMinLength(0).read("Tekan <enter> untuk melanjutkan.");
     }
 
+    public static boolean isLong(String id) {
+        try {
+            Long.parseLong(id);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    public static boolean containsNumberic(String input) {
+        return input.matches(".*\\d+.*");
+    }
 }
