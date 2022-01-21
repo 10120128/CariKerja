@@ -230,7 +230,7 @@ public class CariKerja {
             textIO.getTextTerminal().println("1. Login");
             textIO.getTextTerminal().println("2. Daftar");
             textIO.getTextTerminal().println("3. Keluar");
-            int menu = textIO.newIntInputReader().withDefaultValue(1).read("Pilih menu: ");
+            int menu = textIO.newIntInputReader().withDefaultValue(1).read("Pilih menu ");
 
             if (menu > 3) {
                 Utils.showMessageConfirmation("Menu tidak tersedia", textIO);
