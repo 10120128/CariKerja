@@ -2,6 +2,7 @@ package com.wastu.carikerja.Views.Menu;
 
 import com.wastu.carikerja.Helpers.SessionHelper;
 import com.wastu.carikerja.Utils;
+import com.wastu.carikerja.Views.Item.Lowongan.ListLowonganView;
 import com.wastu.carikerja.Views.View;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
@@ -55,8 +56,7 @@ public class UserMenuView implements View {
         int selection = getSelection();
         switch (selection) {
             case 1:
-                // TODO: Daftar lowongan
-                throw new Exception("Daftar Lowongan belum tersedia");
+                ListLowonganView.getInstance(this).show();
             case 2:
                 // TODO: Cari lowongan
                 throw new Exception("Cari lowongan belum tersedia");
