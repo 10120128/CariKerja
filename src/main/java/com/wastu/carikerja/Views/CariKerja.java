@@ -95,7 +95,7 @@ public class CariKerja {
             String email;
             textIO.getTextTerminal().setBookmark("email");
             while (true) {
-                email = textIO.newStringInputReader().withMinLength(0).read("Masukkan email\t\t: ");
+                email = textIO.newStringInputReader().withMinLength(0).read("Masukkan email\t\t:");
 
                 if (!Utils.isEmail(email)) {
                     Utils.showMessageConfirmation("Email tidak valid", textIO);
@@ -108,7 +108,7 @@ public class CariKerja {
             String password;
             textIO.getTextTerminal().setBookmark("password");
             while (true) {
-                password = textIO.newStringInputReader().withMinLength(0).withInputMasking(true).read("Masukkan password\t: ");
+                password = textIO.newStringInputReader().withMinLength(0).withInputMasking(true).read("Masukkan password\t:");
 
                 if (password.length() < 6) {
                     Utils.showMessageConfirmation("Password tidak valid", textIO);
@@ -155,7 +155,7 @@ public class CariKerja {
             String nama;
             textIO.getTextTerminal().setBookmark("nama");
             while (true) {
-                nama = textIO.newStringInputReader().withMinLength(0).read("Masukkan nama\t\t: ");
+                nama = textIO.newStringInputReader().withMinLength(0).read("Masukkan nama\t\t:");
                 if (nama.length() < 3) {
                     Utils.showMessageConfirmation("Nama tidak valid", textIO);
 
@@ -168,7 +168,7 @@ public class CariKerja {
             String email;
             textIO.getTextTerminal().setBookmark("email");
             while (true) {
-                email = textIO.newStringInputReader().withMinLength(0).read("Masukkan email\t\t: ");
+                email = textIO.newStringInputReader().withMinLength(0).read("Masukkan email\t\t:");
                 if (!Utils.isEmail(email)) {
                     Utils.showMessageConfirmation("Email tidak valid", textIO);
 
@@ -181,7 +181,7 @@ public class CariKerja {
             String password;
             textIO.getTextTerminal().setBookmark("password");
             while (true) {
-                password = textIO.newStringInputReader().withMinLength(0).withInputMasking(true).read("Masukkan password\t: ");
+                password = textIO.newStringInputReader().withMinLength(0).withInputMasking(true).read("Masukkan password\t:");
                 if (password.length() < 6) {
                     Utils.showMessageConfirmation("Password harus lebih dari 6 karakter", textIO);
                     textIO.getTextTerminal().resetToBookmark("password");
@@ -189,7 +189,7 @@ public class CariKerja {
 
                 }
                 String confirmPassword;
-                confirmPassword = textIO.newStringInputReader().withMinLength(0).withInputMasking(true).read("Konfirmasi password\t: ");
+                confirmPassword = textIO.newStringInputReader().withMinLength(0).withInputMasking(true).read("Konfirmasi password\t:");
                 if (!password.equals(confirmPassword)) {
                     Utils.showMessageConfirmation("Password tidak sama", textIO);
                     textIO.getTextTerminal().resetToBookmark("password");
