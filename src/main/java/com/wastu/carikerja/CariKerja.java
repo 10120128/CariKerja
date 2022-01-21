@@ -51,7 +51,7 @@ public class CariKerja {
                 }
             } catch (Exception e) {
                 // Jika terjadi kesalahan maka ulang kembali menu utama.
-                Utils.showMessageConfirmation("Terjadi kesalahan", textIO);
+                Utils.showMessageConfirmation("Terjadi kesalahan:\n" + e.getMessage(), textIO);
                 continue;
             }
 

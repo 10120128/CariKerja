@@ -1,6 +1,7 @@
 package com.wastu.carikerja.Views.Submenu;
 
 import com.wastu.carikerja.Utils;
+import com.wastu.carikerja.Views.Item.Lowongan.CreateLowonganView;
 import com.wastu.carikerja.Views.View;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
@@ -62,8 +63,7 @@ public class ManageLowonganSubmenu implements View {
                 //TODO: Lihat daftar lowongan
                 throw new Exception("Not implemented yet");
             case 2:
-                //TODO: Buat lowongan
-                throw new Exception("Not implemented yet");
+                CreateLowonganView.getInstance(this).show();
             case 3:
                 //TODO: Edit lowongan
                 throw new Exception("Not implemented yet");
