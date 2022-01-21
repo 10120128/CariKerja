@@ -33,7 +33,7 @@ public class AdminMenuView implements View {
             textIO.getTextTerminal().println("2. Kelola Lowongan");
             textIO.getTextTerminal().println("3. Kelola Kategori");
             textIO.getTextTerminal().println("4. Logout");
-            int menu = textIO.newIntInputReader().withDefaultValue(1).read("Pilih menu: ");
+            int menu = textIO.newIntInputReader().withDefaultValue(1).read("Pilih menu ");
 
             if (menu > 4) {
                 Utils.showMessageConfirmation("Menu tidak tersedia", textIO);
