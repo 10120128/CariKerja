@@ -58,7 +58,6 @@ public class AdminMenuView implements View {
         int selection = getSelection();
         switch (selection) {
             case 1:
-                // TODO: Kelola user
                 ManageUserSubmenu.getInstance(this).show();
                 break;
             case 2:

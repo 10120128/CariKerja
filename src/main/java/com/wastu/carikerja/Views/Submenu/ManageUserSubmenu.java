@@ -1,6 +1,7 @@
 package com.wastu.carikerja.Views.Submenu;
 
 import com.wastu.carikerja.Utils;
+import com.wastu.carikerja.Views.Item.DeleteUserView;
 import com.wastu.carikerja.Views.Item.ListUserView;
 import com.wastu.carikerja.Views.Item.UpdateUserView;
 import com.wastu.carikerja.Views.View;
@@ -63,8 +64,7 @@ public class ManageUserSubmenu implements View {
             case 2:
                 UpdateUserView.getInstance(this).show();
             case 3:
-                // TODO: Hapus user
-                throw new Exception("Hapus user");
+                DeleteUserView.getInstance(this).show();
             case 4:
                 previousView.show();
                 break;

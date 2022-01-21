@@ -78,6 +78,10 @@ public class UserController {
         SessionHelper.getInstance().setUser(user);
     }
 
+    public void delete(long id) throws SQLException {
+        userDao.deleteById(id);
+    }
+
     public boolean isUserExists(long id) throws SQLException {
         return userDao.queryForId(id) != null;
     }
