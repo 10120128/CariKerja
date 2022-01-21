@@ -4,10 +4,12 @@ import com.wastu.carikerja.Controllers.UserController;
 import com.wastu.carikerja.Enums.UserRole;
 import com.wastu.carikerja.Helpers.SessionHelper;
 import com.wastu.carikerja.Models.User;
-import com.wastu.carikerja.View.Menu.AdminMenuView;
-import com.wastu.carikerja.View.Menu.UserMenuView;
+import com.wastu.carikerja.Views.Menu.AdminMenuView;
+import com.wastu.carikerja.Views.Menu.UserMenuView;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
+
+import java.sql.SQLException;
 
 public class CariKerja {
     private final TextIO textIO;
@@ -15,11 +17,11 @@ public class CariKerja {
     private final AdminMenuView adminView;
     private final UserController userController;
 
-    public CariKerja(UserMenuView userMenuView, AdminMenuView adminMenuView, UserController userController) {
+    public CariKerja() throws SQLException {
         this.textIO = TextIoFactory.getTextIO();
-        this.userView = userMenuView;
-        this.adminView = adminMenuView;
-        this.userController = userController;
+        this.userView = UserMenuView.getInstance();
+        this.adminView = AdminMenuView.getInstance();
+        this.userController = UserController.getInstance();
     }
 
     /**
@@ -74,9 +76,9 @@ public class CariKerja {
 
         // Tampilkan menu sesuai masing-masing role.
         if (user.getRole() == UserRole.ADMIN) {
-            adminView.viewMenu();
+            adminView.show();
         } else {
-            userView.viewMenu();
+            userView.show();
         }
     }
 
@@ -134,9 +136,9 @@ public class CariKerja {
 
         // Tampilkan menu sesuai masing-masing role.
         if (user.getRole() == UserRole.ADMIN) {
-            adminView.viewMenu();
+            adminView.show();
         } else {
-            userView.viewMenu();
+            userView.show();
         }
     }
 

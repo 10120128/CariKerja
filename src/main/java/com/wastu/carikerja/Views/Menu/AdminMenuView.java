@@ -1,22 +1,32 @@
-package com.wastu.carikerja.View.Menu;
+package com.wastu.carikerja.Views.Menu;
 
 import com.wastu.carikerja.Helpers.SessionHelper;
 import com.wastu.carikerja.Utils;
+import com.wastu.carikerja.Views.Submenu.ManageUserSubmenu;
+import com.wastu.carikerja.Views.View;
+import org.beryx.textio.TextIO;
+import org.beryx.textio.TextIoFactory;
 
-public class AdminMenuView extends BaseMenuView {
-    private static final String TITLE = "Admin";
+public class AdminMenuView implements View {
+    private static AdminMenuView instance;
+    private final TextIO textIO;
 
-    public AdminMenuView() {
-        super(TITLE);
+    private AdminMenuView() {
+        textIO = TextIoFactory.getTextIO();
     }
 
-    @Override
-    protected int getMenuSelection() {
+    public static synchronized AdminMenuView getInstance() {
+        if (instance == null) {
+            instance = new AdminMenuView();
+        }
+        return instance;
+    }
+
+    private int getSelection() {
         textIO.getTextTerminal().setBookmark("admin-menu");
         while (true) {
-            textIO.getTextTerminal().resetToBookmark("admin-menu");
-            viewHeader("Menu Admin");
-            textIO.getTextTerminal().println("Selamat Datang " + SessionHelper.getInstance().getUser().getNama() + "!\n");
+
+            View.viewHeader("Menu Admin", "Selamat Datang" + SessionHelper.getInstance().getUser().getNama() + "!");
             textIO.getTextTerminal().println("1. Kelola User");
             textIO.getTextTerminal().println("2. Kelola Pekerjaan");
             textIO.getTextTerminal().println("3. Kelola Lowongan");
@@ -25,8 +35,11 @@ public class AdminMenuView extends BaseMenuView {
 
             if (menu > 4) {
                 Utils.showMessageConfirmation("Menu tidak tersedia", textIO);
+                textIO.getTextTerminal().resetToBookmark("admin-menu");
                 continue;
             }
+
+            textIO.getTextTerminal().resetToBookmark("admin-menu");
 
             return menu;
         }
@@ -41,12 +54,13 @@ public class AdminMenuView extends BaseMenuView {
      * 4. Logout<br>
      */
     @Override
-    public void viewMenu() throws Exception {
-        int selection = getMenuSelection();
+    public void show() throws Exception {
+        int selection = getSelection();
         switch (selection) {
             case 1:
                 // TODO: Kelola user
-                throw new Exception("Kelola User belum tersedia");
+                ManageUserSubmenu.getInstance(this).show();
+                break;
             case 2:
                 // TODO: Kelola pekerjaan
                 throw new Exception("Kelola Pekerjaan belum tersedia");

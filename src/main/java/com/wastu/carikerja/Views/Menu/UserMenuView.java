@@ -1,22 +1,30 @@
-package com.wastu.carikerja.View.Menu;
+package com.wastu.carikerja.Views.Menu;
 
 import com.wastu.carikerja.Helpers.SessionHelper;
 import com.wastu.carikerja.Utils;
+import com.wastu.carikerja.Views.View;
+import org.beryx.textio.TextIO;
+import org.beryx.textio.TextIoFactory;
 
-public class UserMenuView extends BaseMenuView {
-    private static final String TITLE = "User";
+public class UserMenuView implements View {
+    private static UserMenuView instance;
+    private final TextIO textIO;
 
-    public UserMenuView() {
-        super(TITLE);
+    private UserMenuView() {
+        textIO = TextIoFactory.getTextIO();
     }
 
-    @Override
-    protected int getMenuSelection() {
+    public static synchronized UserMenuView getInstance() {
+        if (instance == null) {
+            instance = new UserMenuView();
+        }
+        return instance;
+    }
+
+    private int getSelection() {
         textIO.getTextTerminal().setBookmark("user-menu");
         while (true) {
-            textIO.getTextTerminal().resetToBookmark("user-menu");
-            super.viewHeader("Menu User");
-            textIO.getTextTerminal().println("Selamat Datang " + SessionHelper.getInstance().getUser().getNama() + "!\n");
+            View.viewHeader("Menu User", "Selamat Datang " + SessionHelper.getInstance().getUser().getNama() + "!\n");
             textIO.getTextTerminal().println("1. Daftar Lowongan");
             textIO.getTextTerminal().println("2. Cari Lowongan");
             textIO.getTextTerminal().println("3. Filter Lowongan (Kategori)");
@@ -25,9 +33,11 @@ public class UserMenuView extends BaseMenuView {
 
             if (menu > 4) {
                 Utils.showMessageConfirmation("Menu tidak tersedia", textIO);
+                textIO.getTextTerminal().resetToBookmark("user-menu");
                 continue;
             }
 
+            textIO.getTextTerminal().resetToBookmark("user-menu");
             return menu;
         }
     }
@@ -41,8 +51,8 @@ public class UserMenuView extends BaseMenuView {
      * 4. Logout
      */
     @Override
-    public void viewMenu() throws Exception {
-        int selection = getMenuSelection();
+    public void show() throws Exception {
+        int selection = getSelection();
         switch (selection) {
             case 1:
                 // TODO: Daftar lowongan

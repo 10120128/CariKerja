@@ -15,8 +15,16 @@ import java.util.Objects;
 
 public class UserController {
     private final Dao<User, Long> userDao;
+    private static UserController instance;
 
-    public UserController() throws SQLException {
+    public static synchronized UserController getInstance() throws SQLException {
+        if (instance == null) {
+            instance = new UserController();
+        }
+        return instance;
+    }
+
+    private UserController() throws SQLException {
         ConnectionSource connectionSource = DatabaseHelper.getInstance().getConnectionSource();
         this.userDao = DaoManager.createDao(connectionSource, User.class);
         TableUtils.createTableIfNotExists(connectionSource, User.class);
