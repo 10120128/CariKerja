@@ -11,6 +11,8 @@ public class Main {
         //TODO : di menu login harus bisa kembali ke menu awal atau sebelumnya
         //TODO : di menu Register harus bisa kembali ke menu awal atau sebelumnya
         //TODO : di halaman update user harus bisa kembali ke menu  sebelumnya
+        //TODO : di halaman hapus user harus bisa kembali ke menu  sebelumnya
+        //TODO : di buat lowongan baru harus bisa kembali ke menu  sebelumnya
         try {
             TextIO mainTextIO = TextIoFactory.getTextIO();
 
