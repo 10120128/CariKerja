@@ -1,6 +1,7 @@
 package com.wastu.carikerja;
 
 import com.wastu.carikerja.Helpers.DatabaseHelper;
+import com.wastu.carikerja.Views.CariKerja;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 
