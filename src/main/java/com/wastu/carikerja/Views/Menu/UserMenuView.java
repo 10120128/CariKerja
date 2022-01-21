@@ -4,6 +4,7 @@ import com.wastu.carikerja.Helpers.SessionHelper;
 import com.wastu.carikerja.Utils;
 import com.wastu.carikerja.Views.Item.Lowongan.FilterLowonganByKategoriView;
 import com.wastu.carikerja.Views.Item.Lowongan.ListLowonganView;
+import com.wastu.carikerja.Views.MainMenuView;
 import com.wastu.carikerja.Views.View;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
@@ -11,11 +12,11 @@ import org.beryx.textio.TextIoFactory;
 public class UserMenuView implements View {
     private static UserMenuView instance;
     private final TextIO textIO;
-    private final View privateView;
+    private final View previousView;
 
     private UserMenuView(View previousView) {
         textIO = TextIoFactory.getTextIO();
-        this.privateView = previousView;
+        this.previousView = previousView;
     }
 
     public static synchronized UserMenuView getInstance(View previousView) {
@@ -67,7 +68,7 @@ public class UserMenuView implements View {
                 FilterLowonganByKategoriView.getInstance(this).show();
             case 4:
                 SessionHelper.getInstance().logout();
-                privateView.show();
+                MainMenuView.getInstance().show();
                 break;
             default:
                 throw new Exception("Menu tidak tersedia");

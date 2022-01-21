@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class DetailLowonganView implements View {
     private static DetailLowonganView instance;
-    private final View previousView;
+    private View previousView;
     private final TextIO textIO;
     private final Lowongan lowongan;
 
@@ -22,6 +22,8 @@ public class DetailLowonganView implements View {
     public static synchronized DetailLowonganView getInstance(View previousView, Lowongan lowongan) throws SQLException {
         if (instance == null) {
             instance = new DetailLowonganView(previousView, lowongan);
+        } else {
+            instance.previousView = previousView;
         }
         return instance;
     }

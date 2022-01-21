@@ -1,7 +1,7 @@
 package com.wastu.carikerja;
 
 import com.wastu.carikerja.Helpers.DatabaseHelper;
-import com.wastu.carikerja.Views.CariKerja;
+import com.wastu.carikerja.Views.MainMenuView;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 
@@ -16,7 +16,7 @@ public class Main {
         try {
             TextIO mainTextIO = TextIoFactory.getTextIO();
 
-            CariKerja cariKerja = new CariKerja();
+            MainMenuView cariKerja = MainMenuView.getInstance();
             cariKerja.show();
 
             // Dispose komponen yang sudah tidak dipakai.

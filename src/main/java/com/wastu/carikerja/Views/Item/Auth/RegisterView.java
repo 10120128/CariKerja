@@ -1,0 +1,108 @@
+package com.wastu.carikerja.Views.Item.Auth;
+
+import com.wastu.carikerja.Controllers.UserController;
+import com.wastu.carikerja.Enums.UserRole;
+import com.wastu.carikerja.Models.User;
+import com.wastu.carikerja.Utils;
+import com.wastu.carikerja.Views.Menu.UserMenuView;
+import com.wastu.carikerja.Views.View;
+import org.beryx.textio.TextIO;
+import org.beryx.textio.TextIoFactory;
+
+import java.sql.SQLException;
+
+public class RegisterView implements View {
+    private final TextIO textIO;
+    private static RegisterView instance;
+    private final View previousView;
+    private final UserController userController;
+
+    private RegisterView(View previousView) throws SQLException {
+        textIO = TextIoFactory.getTextIO();
+        this.previousView = previousView;
+        userController = UserController.getInstance();
+    }
+
+    public static synchronized RegisterView getInstance(View previousView) throws SQLException {
+        if(instance == null){
+            instance = new RegisterView(previousView);
+        }
+        return instance;
+    }
+
+    /**
+     * Menampilkan form register.
+     *
+     * @throws Exception jika terjadi kesalahan.
+     */
+    @Override
+    public void show() throws Exception {
+        textIO.getTextTerminal().setBookmark("register");
+        while (true) {
+            textIO.getTextTerminal().println("Daftar Akun");
+            textIO.getTextTerminal().println("Silahkan masukkan informasi yang dibutuhkan.\n");
+
+            String nama;
+            textIO.getTextTerminal().setBookmark("nama");
+            while (true) {
+                nama = textIO.newStringInputReader().withMinLength(0).read("Masukkan nama\t\t:");
+                if (nama.length() < 3) {
+                    Utils.showMessageConfirmation("Nama tidak valid", textIO);
+
+                    textIO.getTextTerminal().resetToBookmark("nama");
+                    continue;
+                }
+                break;
+            }
+
+            String email;
+            textIO.getTextTerminal().setBookmark("email");
+            while (true) {
+                email = textIO.newStringInputReader().withMinLength(0).read("Masukkan email\t\t:");
+                if (!Utils.isEmail(email)) {
+                    Utils.showMessageConfirmation("Email tidak valid", textIO);
+
+                    textIO.getTextTerminal().resetToBookmark("email");
+                    continue;
+                }
+                break;
+            }
+
+            String password;
+            textIO.getTextTerminal().setBookmark("password");
+            while (true) {
+                password = textIO.newStringInputReader().withMinLength(0).withInputMasking(true).read("Masukkan password\t:");
+                if (password.length() < 6) {
+                    Utils.showMessageConfirmation("Password harus lebih dari 6 karakter", textIO);
+                    textIO.getTextTerminal().resetToBookmark("password");
+                    continue;
+
+                }
+                String confirmPassword;
+                confirmPassword = textIO.newStringInputReader().withMinLength(0).withInputMasking(true).read("Konfirmasi password\t:");
+                if (!password.equals(confirmPassword)) {
+                    Utils.showMessageConfirmation("Password tidak sama", textIO);
+                    textIO.getTextTerminal().resetToBookmark("password");
+                    continue;
+                }
+                break;
+            }
+
+            try {
+                User user = new User(nama, email, password, UserRole.USER);
+                userController.create(user);
+                userController.login(email, password);
+                Utils.showMessageConfirmation("\nAkun berhasil dibuat", textIO);
+                textIO.getTextTerminal().resetToBookmark("register");
+
+                // Pergi ke halaman utama user
+                UserMenuView.getInstance(this).show();
+                break;
+            } catch (Exception e) {
+                Utils.showMessageConfirmation(e.getMessage(), textIO);
+            } finally {
+                textIO.getTextTerminal().resetToBookmark("register");
+            }
+        }
+    }
+}

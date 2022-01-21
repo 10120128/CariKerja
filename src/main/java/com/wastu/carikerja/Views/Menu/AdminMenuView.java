@@ -2,6 +2,7 @@ package com.wastu.carikerja.Views.Menu;
 
 import com.wastu.carikerja.Helpers.SessionHelper;
 import com.wastu.carikerja.Utils;
+import com.wastu.carikerja.Views.MainMenuView;
 import com.wastu.carikerja.Views.Submenu.ManageKategoriSubmenu;
 import com.wastu.carikerja.Views.Submenu.ManageLowonganSubmenu;
 import com.wastu.carikerja.Views.Submenu.ManageUserSubmenu;
@@ -12,14 +13,16 @@ import org.beryx.textio.TextIoFactory;
 public class AdminMenuView implements View {
     private static AdminMenuView instance;
     private final TextIO textIO;
+    private final View previousView;
 
-    private AdminMenuView() {
+    private AdminMenuView(View previousView) {
         textIO = TextIoFactory.getTextIO();
+        this.previousView = previousView;
     }
 
-    public static synchronized AdminMenuView getInstance() {
+    public static synchronized AdminMenuView getInstance(View previousView) {
         if (instance == null) {
-            instance = new AdminMenuView();
+            instance = new AdminMenuView(previousView);
         }
         return instance;
     }
@@ -68,6 +71,7 @@ public class AdminMenuView implements View {
                 ManageKategoriSubmenu.getInstance(this).show();
             case 4:
                 SessionHelper.getInstance().logout();
+                MainMenuView.getInstance().show();
                 break;
             default:
                 throw new Exception("Menu tidak tersedia");
