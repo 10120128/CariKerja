@@ -58,7 +58,7 @@ public class ListLowonganView implements View {
         textIO.getTextTerminal().setBookmark("list-lowongan-input");
         while (true) {
             textIO.getTextTerminal().resetToBookmark("list-lowongan-input");
-            textIO.getTextTerminal().println("\nMasukan id lowongan untuk meliat detail, atau tulis <exit> untuk kembali:");
+            textIO.getTextTerminal().println("\nMasukkan id lowongan untuk meliat detail, atau tulis <exit> untuk kembali:");
             String input = textIO.newStringInputReader().withMinLength(0).read(">");
             if (input.isEmpty()) {
                 Utils.showMessageConfirmation("Input tidak boleh kosong", textIO);

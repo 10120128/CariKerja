@@ -44,7 +44,7 @@ public class UpdateKategoriView implements View {
         long id;
         while (true) {
             textIO.getTextTerminal().setBookmark("update-kategori-id");
-            String idStr = textIO.newStringInputReader().withMinLength(0).read("Masukan ID Kategori yang akan diubah: ");
+            String idStr = textIO.newStringInputReader().withMinLength(0).read("Masukkan ID Kategori yang akan diubah: ");
             if (idStr.isEmpty()) {
                 Utils.showMessageConfirmation("ID tidak boleh kosong", textIO);
                 continue;

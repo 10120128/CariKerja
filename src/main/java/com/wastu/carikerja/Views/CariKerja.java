@@ -90,7 +90,7 @@ public class CariKerja {
         textIO.getTextTerminal().setBookmark("login");
         while (true) {
             textIO.getTextTerminal().println("Login");
-            textIO.getTextTerminal().println("Silahkan masukan informasi yang dibutuhkan\n");
+            textIO.getTextTerminal().println("Silahkan masukkan informasi yang dibutuhkan\n");
 
             String email;
             textIO.getTextTerminal().setBookmark("email");
@@ -150,7 +150,7 @@ public class CariKerja {
         textIO.getTextTerminal().setBookmark("register");
         while (true) {
             textIO.getTextTerminal().println("Daftar Akun");
-            textIO.getTextTerminal().println("Silahkan masukan informasi yang dibutuhkan.\n");
+            textIO.getTextTerminal().println("Silahkan masukkan informasi yang dibutuhkan.\n");
 
             String nama;
             textIO.getTextTerminal().setBookmark("nama");

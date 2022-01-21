@@ -62,7 +62,7 @@ public class CreateLowonganView implements View {
         childTextIO.getTextTerminal().setBookmark("create-lowongan-kategori-id");
         while (true) {
             childTextIO.getTextTerminal().resetToBookmark("create-lowongan-kategori-id");
-            String idStr = childTextIO.newStringInputReader().withMinLength(0).read("Masukan id kategori yang dipilih: ");
+            String idStr = childTextIO.newStringInputReader().withMinLength(0).read("Masukkan id kategori yang dipilih: ");
             if (idStr.isEmpty()) {
                 Utils.showMessageConfirmation("ID tidak boleh kosong", childTextIO);
                 continue;

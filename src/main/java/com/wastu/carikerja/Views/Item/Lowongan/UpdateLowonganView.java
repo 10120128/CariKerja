@@ -62,7 +62,7 @@ public class UpdateLowonganView implements View {
         childTextIO.getTextTerminal().setBookmark("update-lowongan-kategori-id");
         while (true) {
             childTextIO.getTextTerminal().resetToBookmark("update-lowongan-kategori-id");
-            String idStr = childTextIO.newStringInputReader().withMinLength(0).read("Masukan id kategori yang dipilih: ");
+            String idStr = childTextIO.newStringInputReader().withMinLength(0).read("MasuKkan id kategori yang dipilih: ");
             if (idStr.isEmpty()) {
                 Utils.showMessageConfirmation("ID tidak boleh kosong", childTextIO);
                 continue;
@@ -111,7 +111,7 @@ public class UpdateLowonganView implements View {
             textIO.getTextTerminal().setBookmark("update-lowongan-id");
             while (true) {
                 textIO.getTextTerminal().resetToBookmark("update-lowongan-id");
-                String idStr = textIO.newStringInputReader().withMinLength(0).read("Masukan id lowongan yang ingin diubah: ");
+                String idStr = textIO.newStringInputReader().withMinLength(0).read("Masukkan id lowongan yang ingin diubah: ");
                 if (idStr.isEmpty()) {
                     Utils.showMessageConfirmation("Id tidak boleh kosong", textIO);
                     continue;
