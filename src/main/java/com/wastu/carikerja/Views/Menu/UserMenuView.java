@@ -29,7 +29,7 @@ public class UserMenuView implements View {
             textIO.getTextTerminal().println("2. Cari Lowongan");
             textIO.getTextTerminal().println("3. Filter Lowongan (Kategori)");
             textIO.getTextTerminal().println("4. Logout");
-            int menu = textIO.newIntInputReader().withDefaultValue(1).read("Pilih menu: ");
+            int menu = textIO.newIntInputReader().withDefaultValue(1).read("Pilih menu ");
 
             if (menu > 4) {
                 Utils.showMessageConfirmation("Menu tidak tersedia", textIO);
