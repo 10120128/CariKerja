@@ -15,6 +15,8 @@ public class Lowongan {
     private String perusahaan;
     @DatabaseField
     private String deskripsi;
+    @DatabaseField(foreign = true, foreignAutoRefresh = true)
+    Kategori kategori;
     @DatabaseField
     private String tempat;
     @DatabaseField
@@ -23,19 +25,21 @@ public class Lowongan {
     public Lowongan() {
     }
 
-    public Lowongan(long id, String judul, String perusahaan, String deskripsi, String tempat, Date tanggalPosting) {
-        this.id = id;
+    public Lowongan(String judul, String perusahaan, String deskripsi, Kategori kategori, String tempat, Date tanggalPosting) {
         this.judul = judul;
         this.perusahaan = perusahaan;
         this.deskripsi = deskripsi;
+        this.kategori = kategori;
         this.tempat = tempat;
         this.tanggalPosting = tanggalPosting;
     }
 
-    public Lowongan(String judul, String perusahaan, String deskripsi, String tempat, Date tanggalPosting) {
+    public Lowongan(long id, String judul, String perusahaan, String deskripsi, Kategori kategori, String tempat, Date tanggalPosting) {
+        this.id = id;
         this.judul = judul;
         this.perusahaan = perusahaan;
         this.deskripsi = deskripsi;
+        this.kategori = kategori;
         this.tempat = tempat;
         this.tanggalPosting = tanggalPosting;
     }
@@ -70,6 +74,14 @@ public class Lowongan {
 
     public void setDeskripsi(String deskripsi) {
         this.deskripsi = deskripsi;
+    }
+
+    public Kategori getKategori() {
+        return kategori;
+    }
+
+    public void setKategori(Kategori kategori) {
+        this.kategori = kategori;
     }
 
     public String getTempat() {

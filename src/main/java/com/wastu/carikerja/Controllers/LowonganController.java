@@ -4,18 +4,12 @@ import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
-import com.wastu.carikerja.Enums.UserRole;
 import com.wastu.carikerja.Helpers.DatabaseHelper;
-import com.wastu.carikerja.Helpers.SessionHelper;
-import com.wastu.carikerja.Models.Kategori;
 import com.wastu.carikerja.Models.Lowongan;
-import com.wastu.carikerja.Models.LowonganKategori;
 import com.wastu.carikerja.Models.User;
-import com.wastu.carikerja.Utils;
 
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Objects;
 
 public class LowonganController {
     private final Dao<Lowongan, Long> lowonganDao;
