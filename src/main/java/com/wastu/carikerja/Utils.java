@@ -45,6 +45,14 @@ public class Utils {
         }
     }
 
+    public static String toElipsis(String text, int maxLength) {
+        if (text.length() > maxLength) {
+            return text.substring(0, maxLength) + "...";
+        } else {
+            return text;
+        }
+    }
+
     public static boolean containsNumberic(String input) {
         return input.matches(".*\\d+.*");
     }
