@@ -2,6 +2,7 @@ package com.wastu.carikerja.Views.Menu;
 
 import com.wastu.carikerja.Helpers.SessionHelper;
 import com.wastu.carikerja.Utils;
+import com.wastu.carikerja.Views.Submenu.ManageLowonganSubmenu;
 import com.wastu.carikerja.Views.Submenu.ManageUserSubmenu;
 import com.wastu.carikerja.Views.View;
 import org.beryx.textio.TextIO;
@@ -28,8 +29,8 @@ public class AdminMenuView implements View {
 
             View.viewHeader("Menu Admin", "Selamat Datang " + SessionHelper.getInstance().getUser().getNama() + "!");
             textIO.getTextTerminal().println("1. Kelola User");
-            textIO.getTextTerminal().println("2. Kelola Pekerjaan");
-            textIO.getTextTerminal().println("3. Kelola Lowongan");
+            textIO.getTextTerminal().println("2. Kelola Lowongan");
+            textIO.getTextTerminal().println("3. Kelola Kategori");
             textIO.getTextTerminal().println("4. Logout");
             int menu = textIO.newIntInputReader().withDefaultValue(1).read("Pilih menu: ");
 
@@ -61,11 +62,10 @@ public class AdminMenuView implements View {
                 ManageUserSubmenu.getInstance(this).show();
                 break;
             case 2:
-                // TODO: Kelola pekerjaan
-                throw new Exception("Kelola Pekerjaan belum tersedia");
+                ManageLowonganSubmenu.getInstance(this).show();
             case 3:
-                // TODO: Kelola lowongan
-                throw new Exception("Kelola Lowongan belum tersedia");
+                // TODO: Kelola kategori
+                throw new Exception("Kelola Kategori belum tersedia");
             case 4:
                 SessionHelper.getInstance().logout();
                 break;
