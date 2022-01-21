@@ -35,7 +35,7 @@ public class ManageKategoriSubmenu implements View {
             textIO.getTextTerminal().println("3. Update kategori");
             textIO.getTextTerminal().println("4. Hapus kategori");
             textIO.getTextTerminal().println("5. Kembali");
-            int menu = textIO.newIntInputReader().withDefaultValue(1).read("Pilih menu: ");
+            int menu = textIO.newIntInputReader().withDefaultValue(1).read("Pilih menu ");
 
             if (menu > 5) {
                 Utils.showMessageConfirmation("Menu tidak tersedia", textIO);
