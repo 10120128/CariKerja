@@ -30,8 +30,8 @@ public class Utils {
         return matcher.find();
     }
 
-    public static void showMessageConfirmation(String errorMessage, TextIO textIO){
-        textIO.getTextTerminal().println(errorMessage);
+    public static void showMessageConfirmation(String message, TextIO textIO){
+        textIO.getTextTerminal().println(message);
         textIO.newStringInputReader().withMinLength(0).read("Tekan <enter> untuk melanjutkan.");
     }
 

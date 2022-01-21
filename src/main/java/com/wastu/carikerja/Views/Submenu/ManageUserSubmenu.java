@@ -1,6 +1,7 @@
 package com.wastu.carikerja.Views.Submenu;
 
 import com.wastu.carikerja.Utils;
+import com.wastu.carikerja.Views.Item.ListUserView;
 import com.wastu.carikerja.Views.View;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
@@ -57,8 +58,7 @@ public class ManageUserSubmenu implements View {
         int selection = getSelection();
         switch (selection) {
             case 1:
-                // TODO: Lihat daftar user
-                throw new Exception("Lihat daftar user belum tersedia");
+                ListUserView.getInstance(this).show();
             case 2:
                 // TODO: Ubah user
                 throw new Exception("Ubah user belum tersedia");
