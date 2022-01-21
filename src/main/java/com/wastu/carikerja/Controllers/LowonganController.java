@@ -5,6 +5,7 @@ import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import com.wastu.carikerja.Helpers.DatabaseHelper;
+import com.wastu.carikerja.Models.Kategori;
 import com.wastu.carikerja.Models.Lowongan;
 import com.wastu.carikerja.Models.User;
 
@@ -30,7 +31,7 @@ public class LowonganController {
     private LowonganController() throws SQLException {
         ConnectionSource connectionSource = DatabaseHelper.getInstance().getConnectionSource();
         this.lowonganDao = DaoManager.createDao(connectionSource, Lowongan.class);
-        TableUtils.createTableIfNotExists(connectionSource, User.class);
+        TableUtils.createTableIfNotExists(connectionSource, Lowongan.class);
     }
 
     /**

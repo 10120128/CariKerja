@@ -31,7 +31,7 @@ public class Utils {
     }
 
     public static void showMessageConfirmation(String message, TextIO textIO){
-        textIO.getTextTerminal().println(message);
+        textIO.getTextTerminal().println("\n" + message);
         textIO.newStringInputReader().withMinLength(0).read("Tekan <enter> untuk melanjutkan.");
     }
 

@@ -5,11 +5,11 @@ import com.j256.ormlite.table.DatabaseTable;
 
 import java.util.Date;
 
-@DatabaseTable(tableName = "kategori")
+@DatabaseTable(tableName = "lowongan")
 public class Lowongan {
     @DatabaseField(generatedId = true)
     private long id;
-    @DatabaseField(unique = true)
+    @DatabaseField()
     private String judul;
     @DatabaseField()
     private String perusahaan;
