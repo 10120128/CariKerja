@@ -11,7 +11,7 @@ public class DetailLowonganView implements View {
     private static DetailLowonganView instance;
     private View previousView;
     private final TextIO textIO;
-    private final Lowongan lowongan;
+    private Lowongan lowongan;
 
     private DetailLowonganView(View previousView, Lowongan lowongan) {
         this.previousView = previousView;
@@ -24,6 +24,7 @@ public class DetailLowonganView implements View {
             instance = new DetailLowonganView(previousView, lowongan);
         } else {
             instance.previousView = previousView;
+            instance.lowongan = lowongan;
         }
         return instance;
     }
