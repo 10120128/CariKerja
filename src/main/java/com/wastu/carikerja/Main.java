@@ -8,11 +8,9 @@ import org.beryx.textio.TextIoFactory;
 public class Main {
 
     public static void main(String[] args) {
-        //TODO : di menu login harus bisa kembali ke menu awal atau sebelumnya
-        //TODO : di menu Register harus bisa kembali ke menu awal atau sebelumnya
-        //TODO : di halaman update user harus bisa kembali ke menu  sebelumnya
-        //TODO : di halaman hapus user harus bisa kembali ke menu  sebelumnya
-        //TODO : di buat lowongan baru harus bisa kembali ke menu  sebelumnya
+        //TODO : Search lowongan
+        //Todo : Loading indikator saat meload table
+        //TODO : Semua menu dan fitur bisa kembali
         try {
             TextIO mainTextIO = TextIoFactory.getTextIO();
 
