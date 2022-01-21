@@ -13,6 +13,7 @@ import org.beryx.textio.TextIoFactory;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 public class ListLowonganView implements View {
     private static ListLowonganView instance;
@@ -52,6 +53,36 @@ public class ListLowonganView implements View {
                     new Column().header("Judul").headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.LEFT).with(lowongan -> Utils.toElipsis(lowongan.getJudul(), 40)),
                     new Column().header("Kategori").headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.LEFT).with(lowongan -> lowongan.getKategori().getNama()))
             ));
+        }
+
+        textIO.getTextTerminal().setBookmark("list-lowongan-input");
+        while (true) {
+            textIO.getTextTerminal().resetToBookmark("list-lowongan-input");
+            textIO.getTextTerminal().println("\nMasukan id lowongan untuk meliat detail, atau tulis <exit> untuk kembali:");
+            String input = textIO.newStringInputReader().withMinLength(0).read(">");
+            if (input.isEmpty()) {
+                Utils.showMessageConfirmation("Input tidak boleh kosong", textIO);
+                continue;
+            }
+
+            if (input.equalsIgnoreCase("exit")) {
+                break;
+            }
+
+            if (!Utils.isLong(input)) {
+                Utils.showMessageConfirmation("Id tidak valid", textIO);
+                continue;
+            }
+
+            Lowongan lowongan = listLowongan.stream().filter(l -> l.getId() == Long.parseLong(input)).findFirst().orElse(null);
+            if (lowongan == null) {
+                Utils.showMessageConfirmation("Lowongan dengan id " + input + " tidak ditemukan", textIO);
+                continue;
+            }
+
+            // Jika lowongan ditemukan, tampilkan detail lowongan
+            textIO.getTextTerminal().resetToBookmark("list-lowongan");
+            DetailLowonganView.getInstance(this, lowongan).show();
         }
 
         textIO.newStringInputReader().withMinLength(0).read("Tekan <enter> untuk kembali.");

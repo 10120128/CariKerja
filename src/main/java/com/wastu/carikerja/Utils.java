@@ -5,7 +5,9 @@ import org.beryx.textio.TextIO;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
 import java.util.Base64;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -51,6 +53,11 @@ public class Utils {
         } else {
             return text;
         }
+    }
+
+    public static String convertDateToString(Date date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        return sdf.format(date);
     }
 
     public static boolean containsNumberic(String input) {

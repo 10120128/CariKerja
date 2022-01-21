@@ -2,6 +2,7 @@ package com.wastu.carikerja.Models;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+import com.wastu.carikerja.Utils;
 
 import java.util.Date;
 
@@ -92,8 +93,8 @@ public class Lowongan {
         this.tempat = tempat;
     }
 
-    public Date getTanggalPosting() {
-        return tanggalPosting;
+    public String getTanggalPosting() {
+        return Utils.convertDateToString(tanggalPosting);
     }
 
     public void setTanggalPosting(Date tanggalPosting) {
