@@ -33,7 +33,7 @@ public class ManageUserSubmenu implements View {
             textIO.getTextTerminal().println("2. Ubah user");
             textIO.getTextTerminal().println("3. Hapus user");
             textIO.getTextTerminal().println("4. Kembali");
-            int menu = textIO.newIntInputReader().withDefaultValue(1).read("Pilih menu: ");
+            int menu = textIO.newIntInputReader().withDefaultValue(1).read("Pilih menu ");
 
             if (menu > 4) {
                 Utils.showMessageConfirmation("Menu tidak tersedia", textIO);
