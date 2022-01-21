@@ -1,6 +1,7 @@
 package com.wastu.carikerja.Views.Submenu;
 
 import com.wastu.carikerja.Utils;
+import com.wastu.carikerja.Views.Item.ListKategoriView;
 import com.wastu.carikerja.Views.View;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
@@ -59,8 +60,7 @@ public class ManageKategoriSubmenu implements View {
         int selection = getSelection();
         switch (selection) {
             case 1:
-                //TODO: Lihat daftar kategori
-                throw new Exception("Not implemented yet");
+                ListKategoriView.getInstance(this).show();
             case 2:
                 //TODO: Buat kategori
                 throw new Exception("Not implemented yet");

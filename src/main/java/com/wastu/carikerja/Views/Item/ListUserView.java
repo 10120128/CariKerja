@@ -43,11 +43,16 @@ public class ListUserView implements View {
         textIO.getTextTerminal().setBookmark("list-user");
         List<User> listUser = userController.list();
 
-        textIO.getTextTerminal().println(AsciiTable.getTable(listUser, Arrays.asList(
-                new Column().header("Id").headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.LEFT).with(user -> Long.toString(user.getId())),
-                new Column().header("Nama").headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.LEFT).with(User::getNama),
-                new Column().header("Email").headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.LEFT).with(User::getEmail),
-                new Column().header("Role").headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.LEFT).with(user -> String.valueOf(user.getRole())))));
+        if (listUser.isEmpty()) {
+            textIO.getTextTerminal().println("Tidak ada user yang ditemukan");
+        } else {
+            textIO.getTextTerminal().println(AsciiTable.getTable(listUser, Arrays.asList(
+                    new Column().header("Id").headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.LEFT).with(user -> Long.toString(user.getId())),
+                    new Column().header("Nama").headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.LEFT).with(User::getNama),
+                    new Column().header("Email").headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.LEFT).with(User::getEmail),
+                    new Column().header("Role").headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.LEFT).with(user -> String.valueOf(user.getRole())))));
+        }
+
 
         textIO.newStringInputReader().withMinLength(0).read("Tekan <enter> untuk kembali.");
         textIO.getTextTerminal().resetToBookmark("list-user");
