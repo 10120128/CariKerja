@@ -10,7 +10,7 @@ public interface View {
     /**
      * Menampilkan header beserta sub menu yang sedang ditampilkan.
      */
-    static void viewHeader(String title, String subtitle){
+    static void showHeader(String title, String subtitle){
         //TODO: Ganti header agar lebih menarik
         TextIO textIO = TextIoFactory.getTextIO();
         textIO.getTextTerminal().println("Halaman: " + title);

@@ -1,6 +1,7 @@
 package com.wastu.carikerja.Views.Submenu;
 
 import com.wastu.carikerja.Utils;
+import com.wastu.carikerja.Views.Item.CreateKategoriView;
 import com.wastu.carikerja.Views.Item.ListKategoriView;
 import com.wastu.carikerja.Views.View;
 import org.beryx.textio.TextIO;
@@ -26,7 +27,7 @@ public class ManageKategoriSubmenu implements View {
     private int getSelection() {
         textIO.getTextTerminal().setBookmark("manage-kategori-menu");
         while (true) {
-            View.viewHeader("Kelola Kategori", "");
+            View.showHeader("Kelola Kategori", "");
             textIO.getTextTerminal().println("1. Lihat daftar kategori");
             textIO.getTextTerminal().println("2. Buat kategori");
             textIO.getTextTerminal().println("3. Update kategori");
@@ -62,8 +63,7 @@ public class ManageKategoriSubmenu implements View {
             case 1:
                 ListKategoriView.getInstance(this).show();
             case 2:
-                //TODO: Buat kategori
-                throw new Exception("Not implemented yet");
+                CreateKategoriView.getInstance(this).show();
             case 3:
                 //TODO: Edit kategori
                 throw new Exception("Not implemented yet");

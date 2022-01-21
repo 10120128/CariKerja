@@ -25,7 +25,7 @@ public class ManageLowonganSubmenu implements View {
     private int getSelection() {
         textIO.getTextTerminal().setBookmark("manage-lowongan-menu");
         while (true) {
-            View.viewHeader("Kelola Lowongan", "");
+            View.showHeader("Kelola Lowongan", "");
             textIO.getTextTerminal().println("1. Lihat daftar lowongan");
             textIO.getTextTerminal().println("2. Buat lowongan");
             textIO.getTextTerminal().println("3. Edit lowongan");

@@ -28,7 +28,7 @@ public class AdminMenuView implements View {
         textIO.getTextTerminal().setBookmark("admin-menu");
         while (true) {
 
-            View.viewHeader("Menu Admin", "Selamat Datang " + SessionHelper.getInstance().getUser().getNama() + "!");
+            View.showHeader("Menu Admin", "Selamat Datang " + SessionHelper.getInstance().getUser().getNama() + "!");
             textIO.getTextTerminal().println("1. Kelola User");
             textIO.getTextTerminal().println("2. Kelola Lowongan");
             textIO.getTextTerminal().println("3. Kelola Kategori");

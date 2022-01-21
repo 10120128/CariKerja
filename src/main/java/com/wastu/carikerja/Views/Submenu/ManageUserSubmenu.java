@@ -28,7 +28,7 @@ public class ManageUserSubmenu implements View {
     private int getSelection() {
         textIO.getTextTerminal().setBookmark("manage-user-menu");
         while (true) {
-            View.viewHeader("Kelola akun user", "");
+            View.showHeader("Kelola akun user", "");
             textIO.getTextTerminal().println("1. Lihat daftar user");
             textIO.getTextTerminal().println("2. Ubah user");
             textIO.getTextTerminal().println("3. Hapus user");

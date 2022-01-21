@@ -40,7 +40,7 @@ public class DeleteUserView implements View {
         textIO.getTextTerminal().setBookmark("delete-user");
         while (true) {
             textIO.getTextTerminal().resetToBookmark("delete-user");
-            View.viewHeader("Delete User", "Kosongkan field yang tidak ingin dihapus");
+            View.showHeader("Delete User", "Kosongkan field yang tidak ingin dihapus");
             String id = textIO.newStringInputReader().withMinLength(0).read("Masukkan ID user yang akan dihapus: ");
 
             if (id.isBlank()) {
