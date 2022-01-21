@@ -1,6 +1,7 @@
 package com.wastu.carikerja.Views.Item.User;
 
 import com.wastu.carikerja.Controllers.UserController;
+import com.wastu.carikerja.Models.User;
 import com.wastu.carikerja.Utils;
 import com.wastu.carikerja.Views.View;
 import org.beryx.textio.TextIO;
@@ -55,6 +56,19 @@ public class DeleteUserView implements View {
 
             if (!userController.isUserExists(Long.parseLong(id))) {
                 Utils.showMessageConfirmation("ID user tidak ditemukan", textIO);
+                continue;
+            }
+
+            User user = userController.get(Long.parseLong(id));
+
+            textIO.getTextTerminal().println();
+            textIO.getTextTerminal().println("Id User\t\t: " + user.getId());
+            textIO.getTextTerminal().println("Nama User\t: " + user.getNama());
+            textIO.getTextTerminal().println("Email User\t: " + user.getEmail());
+            textIO.getTextTerminal().println("Role User\t: " + user.getRole().toString());
+            boolean confirmation = textIO.newBooleanInputReader().withDefaultValue(false).read("Apakah anda yakin ingin menghapus user ini?");
+
+            if (!confirmation) {
                 continue;
             }
 
