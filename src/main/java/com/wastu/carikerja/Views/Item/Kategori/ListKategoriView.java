@@ -33,7 +33,7 @@ public class ListKategoriView implements View {
     }
 
     /**
-     * Menampilkan daftar kategori, akan kembali ke view sebelumnya jika kategori memilih untuk kembali.
+     * Menampilkan daftar kategori, akan kembali ke view sebelumnya jika user memilih untuk kembali.
      *
      * @throws Exception jika terjadi error
      */
@@ -46,7 +46,7 @@ public class ListKategoriView implements View {
             textIO.getTextTerminal().println("Tidak ada kategori yang tersedia");
         } else {
             textIO.getTextTerminal().println(AsciiTable.getTable(listKategori, Arrays.asList(
-                    new Column().header("Id").headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.LEFT).with(planet -> Long.toString(planet.getId())),
+                    new Column().header("Id").headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.LEFT).with(kategori -> Long.toString(kategori.getId())),
                     new Column().header("Nama").headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.LEFT).with(Kategori::getNama))
             ));
         }
