@@ -43,7 +43,7 @@ public class UpdateUserView implements View {
         textIO.getTextTerminal().setBookmark("update-user");
         while (true) {
             textIO.getTextTerminal().resetToBookmark("update-user");
-            View.viewHeader("Update User", "Kosongkan field yang tidak ingin diupdate");
+            View.showHeader("Update User", "Kosongkan field yang tidak ingin diupdate");
             String id = textIO.newStringInputReader().withMinLength(0).read("Masukkan ID user yang akan diupdate: ");
 
             if (id.isBlank()) {
@@ -62,31 +62,37 @@ public class UpdateUserView implements View {
             }
 
             User user = userController.get(Long.parseLong(id));
+            String nama;
+            textIO.getTextTerminal().setBookmark("update-user-nama");
             while (true) {
-                textIO.getTextTerminal().setBookmark("update-user-nama");
-                String nama = textIO.newStringInputReader().withDefaultValue(user.getNama()).read("Masukkan nama user");
+                nama = textIO.newStringInputReader().withDefaultValue(user.getNama()).read("Masukkan nama user");
                 if (Utils.containsNumberic(nama)) {
                     Utils.showMessageConfirmation("Nama user tidak boleh terdapat angka", textIO);
                     textIO.getTextTerminal().resetToBookmark("update-user-nama");
                     continue;
                 }
+                break;
+            }
 
-                textIO.getTextTerminal().setBookmark("update-user-email");
-                String email = textIO.newStringInputReader().withDefaultValue(user.getEmail()).read("Masukkan email user");
+            String email;
+            textIO.getTextTerminal().setBookmark("update-user-email");
+            while (true) {
+                email = textIO.newStringInputReader().withDefaultValue(user.getEmail()).read("Masukkan email user");
                 if (!Utils.isEmail(email)) {
                     Utils.showMessageConfirmation("Email tidak valid", textIO);
                     textIO.getTextTerminal().resetToBookmark("update-user-email");
                     continue;
                 }
-
-                boolean isAdmin = textIO.newBooleanInputReader().withDefaultValue(user.isAdmin()).read("Apakah admin?");
-                UserRole userRole = isAdmin ? UserRole.ADMIN : UserRole.USER;
-
-                userController.update(Long.parseLong(id), nama, email, userRole);
-
-                Utils.showMessageConfirmation("User berhasil diupdate", textIO);
                 break;
             }
+
+            boolean isAdmin = textIO.newBooleanInputReader().withDefaultValue(user.isAdmin()).read("Apakah admin?");
+            UserRole userRole = isAdmin ? UserRole.ADMIN : UserRole.USER;
+
+            userController.update(Long.parseLong(id), nama, email, userRole);
+
+            Utils.showMessageConfirmation("User berhasil diupdate", textIO);
+
             textIO.getTextTerminal().resetToBookmark("update-user");
             previousView.show();
             break;
