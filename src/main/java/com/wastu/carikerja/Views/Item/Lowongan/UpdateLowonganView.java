@@ -195,7 +195,7 @@ public class UpdateLowonganView implements View {
                 textIO.getTextTerminal().println("> Id\t: " + kategori.getId());
                 textIO.getTextTerminal().println("> Nama\t: " + kategori.getNama());
                 if(kategori.getId() == lowongan.getKategori().getId()){
-                    boolean input = textIO.newBooleanInputReader().read("Ubah kategori?");
+                    boolean input = textIO.newBooleanInputReader().withDefaultValue(false).read("Ubah kategori?");
                     if(input) {
                         textIO.getTextTerminal().println("Mengarahkan ke menu pilih kategori...");
                         kategori = showSelectKategori();
