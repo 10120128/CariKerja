@@ -95,7 +95,7 @@ public class CariKerja {
             String email;
             textIO.getTextTerminal().setBookmark("email");
             while (true) {
-                email = textIO.newStringInputReader().withMinLength(0).read("Masukkan email: ");
+                email = textIO.newStringInputReader().withMinLength(0).read("Masukkan email\t\t: ");
 
                 if (!Utils.isEmail(email)) {
                     Utils.showMessageConfirmation("Email tidak valid", textIO);
@@ -108,7 +108,7 @@ public class CariKerja {
             String password;
             textIO.getTextTerminal().setBookmark("password");
             while (true) {
-                password = textIO.newStringInputReader().withMinLength(0).withInputMasking(true).read("Masukkan password: ");
+                password = textIO.newStringInputReader().withMinLength(0).withInputMasking(true).read("Masukkan password\t: ");
 
                 if (password.length() < 6) {
                     Utils.showMessageConfirmation("Password tidak valid", textIO);
