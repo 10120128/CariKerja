@@ -71,4 +71,8 @@ public class LowonganController {
     public void delete(long id) throws SQLException {
         lowonganDao.deleteById(id);
     }
+
+    public boolean isExists(long id) throws SQLException {
+        return lowonganDao.queryForId(id) != null;
+    }
 }
