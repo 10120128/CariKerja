@@ -31,6 +31,9 @@ public class UpdateKategoriView implements View {
     /**
      * Menampilkan view untuk mengubah kategori baru.
      *
+     * <p>Aplikasi akan meminta user untuk memasukkan id kategori yang akan diupdate, kemudian akan menampilkan form untuk
+     * mengupdate kategori. Inputan  memiliki nilai default data sebelumnya.
+     *
      * @throws Exception jika terjadi kesalahan
      */
     @Override
