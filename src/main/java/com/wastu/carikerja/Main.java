@@ -4,21 +4,19 @@ import com.wastu.carikerja.Controllers.KategoriController;
 import com.wastu.carikerja.Controllers.UserController;
 import com.wastu.carikerja.Helpers.DatabaseHelper;
 import com.wastu.carikerja.Views.MainMenuView;
-import com.wastu.carikerja.Views.Menu.UserMenuView;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 
 public class Main {
 
     public static void main(String[] args) {
-        //Todo : Loading indikator saat meload table
         //TODO : Semua menu dan fitur bisa kembali
         try {
             TextIO mainTextIO = TextIoFactory.getTextIO();
 
             // Lazy loading
             mainTextIO.getTextTerminal().setBookmark("main");
-            mainTextIO.getTextTerminal().println("Mohon tunggu sebentar....");
+            Utils.showLoading(mainTextIO);
             DatabaseHelper.getInstance();
             KategoriController.getInstance();
             UserController.getInstance();

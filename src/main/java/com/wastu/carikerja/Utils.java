@@ -38,6 +38,10 @@ public class Utils {
         textIO.newStringInputReader().withMinLength(0).read("Tekan <enter> untuk melanjutkan.");
     }
 
+    public static void showLoading(TextIO textIO) {
+        textIO.getTextTerminal().println("Mohon tunggu sebentar...");
+    }
+
     public static boolean isLong(String id) {
         try {
             Long.parseLong(id);

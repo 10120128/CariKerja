@@ -13,7 +13,6 @@ import org.beryx.textio.TextIoFactory;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 
 public class ListLowonganView implements View {
     private static ListLowonganView instance;
@@ -44,7 +43,9 @@ public class ListLowonganView implements View {
     @Override
     public void show() throws Exception {
         textIO.getTextTerminal().setBookmark("list-lowongan");
+        Utils.showLoading(textIO);
         List<Lowongan> listLowongan = lowonganController.list();
+        textIO.getTextTerminal().resetToBookmark("list-lowongan");
 
         if (listLowongan.isEmpty()) {
             textIO.getTextTerminal().println("Tidak ada lowongan yang tersedia");
