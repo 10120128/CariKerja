@@ -50,7 +50,7 @@ public class ListLowonganView implements View {
         if (listLowongan.isEmpty()) {
             textIO.getTextTerminal().println("Tidak ada lowongan yang tersedia");
         } else {
-            View.showHeader("Daftar Lowongan", "");
+            View.showHeader("Lihat Daftar Lowongan", "");
             textIO.getTextTerminal().println(AsciiTable.getTable(listLowongan, Arrays.asList(
                     new Column().header("Id").headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.LEFT).with(lowongan -> Long.toString(lowongan.getId())),
                     new Column().header("Judul").headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.LEFT).with(lowongan -> Utils.toElipsis(lowongan.getJudul(), 40)),
