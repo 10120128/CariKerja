@@ -7,8 +7,6 @@ import com.wastu.carikerja.Views.Item.Auth.RegisterView;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 
-import java.sql.SQLException;
-
 public class MainMenuView implements View{
     private static MainMenuView instance;
     private final TextIO textIO;

@@ -41,16 +41,20 @@ public class RegisterView implements View {
     public void show() throws Exception {
         textIO.getTextTerminal().setBookmark("register");
         while (true) {
-            View.showHeader("Daftar Akun", "Silahkan masukkan informasi yang dibutuhkan");
-
+            View.showHeader("Daftar Akun", "Silahkan masukkan informasi yang dibutuhkan. Ketik <exit> untuk kembali.");
 
             String nama;
             textIO.getTextTerminal().setBookmark("nama");
             while (true) {
                 nama = textIO.newStringInputReader().withMinLength(0).read("Masukkan nama\t\t:");
+
+                if (nama.equalsIgnoreCase("exit")) {
+                    textIO.getTextTerminal().resetToBookmark("register");
+                    previousView.show();
+                }
+
                 if (nama.length() < 3) {
                     Utils.showMessageConfirmation("Nama tidak valid", textIO);
-
                     textIO.getTextTerminal().resetToBookmark("nama");
                     continue;
                 }
@@ -61,9 +65,14 @@ public class RegisterView implements View {
             textIO.getTextTerminal().setBookmark("email");
             while (true) {
                 email = textIO.newStringInputReader().withMinLength(0).read("Masukkan email\t\t:");
+
+                if(email.equalsIgnoreCase("exit")){
+                    textIO.getTextTerminal().resetToBookmark("register");
+                    previousView.show();
+                }
+
                 if (!Utils.isEmail(email)) {
                     Utils.showMessageConfirmation("Email tidak valid", textIO);
-
                     textIO.getTextTerminal().resetToBookmark("email");
                     continue;
                 }
@@ -74,11 +83,16 @@ public class RegisterView implements View {
             textIO.getTextTerminal().setBookmark("password");
             while (true) {
                 password = textIO.newStringInputReader().withMinLength(0).withInputMasking(true).read("Masukkan password\t:");
+
+                if(password.equalsIgnoreCase("exit")){
+                    textIO.getTextTerminal().resetToBookmark("register");
+                    previousView.show();
+                }
+
                 if (password.length() < 6) {
                     Utils.showMessageConfirmation("Password harus lebih dari 6 karakter", textIO);
                     textIO.getTextTerminal().resetToBookmark("password");
                     continue;
-
                 }
                 String confirmPassword;
                 confirmPassword = textIO.newStringInputReader().withMinLength(0).withInputMasking(true).read("Konfirmasi password\t:");
@@ -88,6 +102,13 @@ public class RegisterView implements View {
                     continue;
                 }
                 break;
+            }
+
+            // Konfirmasi
+            boolean confirmation = textIO.newBooleanInputReader().withDefaultValue(true).read("Apakah data yang anda masukkan sudah benar? (Y/N)");
+            if (!confirmation) {
+                textIO.getTextTerminal().resetToBookmark("register");
+                continue;
             }
 
             try {
