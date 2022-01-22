@@ -35,63 +35,54 @@ public class LoginView implements View {
     @Override
     public void show() throws Exception {
         textIO.getTextTerminal().setBookmark("login");
+        View.showHeader("Login", "Silahkan masukkan informasi yang dibutuhkan. Ketik <exit> untuk kembali.");
+
+        String email;
+        textIO.getTextTerminal().setBookmark("email");
         while (true) {
-            View.showHeader("Login", "Silahkan masukkan informasi yang dibutuhkan. Ketik <exit> untuk kembali.");
+            email = textIO.newStringInputReader().withMinLength(0).read("Masukkan email\t\t:");
 
-            String email;
-            textIO.getTextTerminal().setBookmark("email");
-            while (true) {
-                email = textIO.newStringInputReader().withMinLength(0).read("Masukkan email\t\t:");
-
-                if (email.equalsIgnoreCase("exit")) {
-                    textIO.getTextTerminal().resetToBookmark("login");
-                    previousView.show();
-                }
-
-                if (!Utils.isEmail(email)) {
-                    Utils.showMessageConfirmation("Email tidak valid", textIO);
-                    textIO.getTextTerminal().resetToBookmark("email");
-                    continue;
-                }
-                break;
-            }
-
-            String password;
-            textIO.getTextTerminal().setBookmark("password");
-            while (true) {
-                password = textIO.newStringInputReader().withMinLength(0).withInputMasking(true).read("Masukkan password\t:");
-
-                if (password.equalsIgnoreCase("exit")) {
-                    textIO.getTextTerminal().resetToBookmark("login");
-                    previousView.show();
-                }
-
-                if (password.length() < 6) {
-                    Utils.showMessageConfirmation("Password tidak valid", textIO);
-                    textIO.getTextTerminal().resetToBookmark("password");
-                    continue;
-                }
-                break;
-            }
-
-            try {
-                userController.login(email, password);
-                Utils.showMessageConfirmation("Login berhasil.", textIO);
+            if (email.equalsIgnoreCase("exit")) {
                 textIO.getTextTerminal().resetToBookmark("login");
-
-                // Lempar ke view admin jika user admin
-                if (SessionHelper.getInstance().isAdmin()) {
-                    AdminMenuView.getInstance(this).show();
-                } else {
-                    UserMenuView.getInstance(this).show();
-                }
-
-                break;
-            } catch (Exception e) {
-                Utils.showMessageConfirmation(e.getMessage(), textIO);
-            } finally {
-                textIO.getTextTerminal().resetToBookmark("login");
+                previousView.show();
             }
+
+            if (!Utils.isEmail(email)) {
+                Utils.showMessageConfirmation("Email tidak valid", textIO);
+                textIO.getTextTerminal().resetToBookmark("email");
+                continue;
+            }
+            break;
         }
+
+        String password;
+        textIO.getTextTerminal().setBookmark("password");
+        while (true) {
+            password = textIO.newStringInputReader().withMinLength(0).withInputMasking(true).read("Masukkan password\t:");
+
+            if (password.equalsIgnoreCase("exit")) {
+                textIO.getTextTerminal().resetToBookmark("login");
+                previousView.show();
+            }
+
+            if (password.length() < 6) {
+                Utils.showMessageConfirmation("Password tidak valid", textIO);
+                textIO.getTextTerminal().resetToBookmark("password");
+                continue;
+            }
+            break;
+        }
+
+        userController.login(email, password);
+        Utils.showMessageConfirmation("Login berhasil.", textIO);
+        textIO.getTextTerminal().resetToBookmark("login");
+
+        // Lempar ke view admin jika user admin
+        if (SessionHelper.getInstance().isAdmin()) {
+            AdminMenuView.getInstance(this).show();
+        } else {
+            UserMenuView.getInstance(this).show();
+        }
+
     }
 }

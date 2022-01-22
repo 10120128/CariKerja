@@ -24,9 +24,9 @@ public class RegisterView implements View {
     }
 
     public static synchronized RegisterView getInstance(View previousView) throws SQLException {
-        if(instance == null){
+        if (instance == null) {
             instance = new RegisterView(previousView);
-        }else{
+        } else {
             instance.previousView = previousView;
         }
         return instance;
@@ -66,7 +66,7 @@ public class RegisterView implements View {
             while (true) {
                 email = textIO.newStringInputReader().withMinLength(0).read("Masukkan email\t\t:");
 
-                if(email.equalsIgnoreCase("exit")){
+                if (email.equalsIgnoreCase("exit")) {
                     textIO.getTextTerminal().resetToBookmark("register");
                     previousView.show();
                 }
@@ -84,7 +84,7 @@ public class RegisterView implements View {
             while (true) {
                 password = textIO.newStringInputReader().withMinLength(0).withInputMasking(true).read("Masukkan password\t:");
 
-                if(password.equalsIgnoreCase("exit")){
+                if (password.equalsIgnoreCase("exit")) {
                     textIO.getTextTerminal().resetToBookmark("register");
                     previousView.show();
                 }
@@ -111,21 +111,16 @@ public class RegisterView implements View {
                 continue;
             }
 
-            try {
-                User user = new User(nama, email, password, UserRole.USER);
-                userController.create(user);
-                userController.login(email, password);
-                Utils.showMessageConfirmation("\nAkun berhasil dibuat", textIO);
-                textIO.getTextTerminal().resetToBookmark("register");
+            User user = new User(nama, email, password, UserRole.USER);
+            userController.create(user);
+            userController.login(email, password);
+            Utils.showMessageConfirmation("\nAkun berhasil dibuat", textIO);
+            textIO.getTextTerminal().resetToBookmark("register");
 
-                // Pergi ke halaman utama user
-                UserMenuView.getInstance(this).show();
-                break;
-            } catch (Exception e) {
-                Utils.showMessageConfirmation(e.getMessage(), textIO);
-            } finally {
-                textIO.getTextTerminal().resetToBookmark("register");
-            }
+            // Pergi ke halaman utama user
+            UserMenuView.getInstance(this).show();
+            textIO.getTextTerminal().resetToBookmark("register");
+            break;
         }
     }
 }
