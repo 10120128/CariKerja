@@ -33,9 +33,6 @@ public class Main {
                 MainMenuView cariKerja = MainMenuView.getInstance();
                 cariKerja.show();
 
-                // Dispose komponen yang sudah tidak dipakai.
-                DatabaseHelper.getInstance().closeConnectionSource();
-                mainTextIO.dispose();
                 break;
             } catch (CommunicationsException | CommunicationException e) {
                 Utils.showMessageConfirmation("Gagal terhubung ke database, silahkan cek koneksi internet anda", mainTextIO);
@@ -45,5 +42,13 @@ public class Main {
                 Utils.showMessageConfirmation("Terjadi kesalahan.\n" + e.getMessage(), mainTextIO);
             }
         }
+
+        // Dispose komponen yang sudah tidak dipakai.
+        try {
+            DatabaseHelper.getInstance().closeConnectionSource();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        mainTextIO.dispose();
     }
 }
