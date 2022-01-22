@@ -36,8 +36,7 @@ public class LoginView implements View {
     public void show() throws Exception {
         textIO.getTextTerminal().setBookmark("login");
         while (true) {
-            textIO.getTextTerminal().println("Login");
-            textIO.getTextTerminal().println("Silahkan masukkan informasi yang dibutuhkan\n");
+            View.showHeader("Login", "Silahkan masukkan informasi yang dibutuhkan");
 
             String email;
             textIO.getTextTerminal().setBookmark("email");

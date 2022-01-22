@@ -41,8 +41,8 @@ public class RegisterView implements View {
     public void show() throws Exception {
         textIO.getTextTerminal().setBookmark("register");
         while (true) {
-            textIO.getTextTerminal().println("Daftar Akun");
-            textIO.getTextTerminal().println("Silahkan masukkan informasi yang dibutuhkan.\n");
+            View.showHeader("Daftar Akun", "Silahkan masukkan informasi yang dibutuhkan");
+
 
             String nama;
             textIO.getTextTerminal().setBookmark("nama");
