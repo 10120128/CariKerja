@@ -47,6 +47,7 @@ public class ListUserView implements View {
         if (listUser.isEmpty()) {
             textIO.getTextTerminal().println("Tidak ada user yang ditemukan");
         } else {
+            View.showHeader("Daftar user", "");
             textIO.getTextTerminal().println(AsciiTable.getTable(listUser, Arrays.asList(
                     new Column().header("Id").headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.LEFT).with(user -> Long.toString(user.getId())),
                     new Column().header("Nama").headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.LEFT).with(User::getNama),
