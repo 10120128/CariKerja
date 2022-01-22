@@ -1,6 +1,7 @@
 package com.wastu.carikerja;
 
 import com.wastu.carikerja.Controllers.KategoriController;
+import com.wastu.carikerja.Controllers.LowonganController;
 import com.wastu.carikerja.Controllers.UserController;
 import com.wastu.carikerja.Helpers.DatabaseHelper;
 import com.wastu.carikerja.Views.MainMenuView;
@@ -19,7 +20,7 @@ public class Main {
             Utils.showLoading(mainTextIO);
             DatabaseHelper.getInstance();
             KategoriController.getInstance();
-            UserController.getInstance();
+            LowonganController.getInstance();
             UserController.getInstance();
             mainTextIO.getTextTerminal().resetToBookmark("main");
 

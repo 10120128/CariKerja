@@ -56,7 +56,7 @@ public class SearchLowonganView implements View {
             }
 
             View.showHeader("Cari Lowongan", "");
-            query = textIO.newStringInputReader().withMinLength(0).read("Masukan kata kunci pencarian: ");
+            query = textIO.newStringInputReader().withMinLength(0).read("Masukkan kata kunci pencarian: ");
             if (query.isBlank()) {
                 Utils.showMessageConfirmation("Kata kunci pencarian tidak boleh kosong", textIO);
                 continue;
