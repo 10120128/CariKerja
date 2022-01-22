@@ -47,6 +47,7 @@ public class ListKategoriView implements View {
         if (listKategori.isEmpty()) {
             textIO.getTextTerminal().println("Tidak ada kategori yang tersedia");
         } else {
+            View.showHeader("Daftar kategori", "");
             textIO.getTextTerminal().println(AsciiTable.getTable(listKategori, Arrays.asList(
                     new Column().header("Id").headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.LEFT).with(kategori -> Long.toString(kategori.getId())),
                     new Column().header("Nama").headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.LEFT).with(Kategori::getNama))
