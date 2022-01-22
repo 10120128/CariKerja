@@ -21,6 +21,8 @@ public class FilterLowonganByKategoriView implements View {
     private View previousView;
     private final LowonganController lowonganController;
     private final TextIO textIO;
+    private Kategori selectedKategori = null;
+    private List<Lowongan> listLowongan = null;
 
     private FilterLowonganByKategoriView(View previousView) throws SQLException {
         this.previousView = previousView;
@@ -31,7 +33,9 @@ public class FilterLowonganByKategoriView implements View {
     public static synchronized FilterLowonganByKategoriView getInstance(View previousView) throws SQLException {
         if (instance == null) {
             instance = new FilterLowonganByKategoriView(previousView);
-        }else{
+        } else {
+            instance.listLowongan = null;
+            instance.selectedKategori = null;
             instance.previousView = previousView;
         }
         return instance;
@@ -46,12 +50,14 @@ public class FilterLowonganByKategoriView implements View {
     public void show() throws Exception {
         textIO.getTextTerminal().setBookmark("filter-lowongan");
 
-        // Tampilkan daftar kategori, kemudian tampilkan daftar lowongan yang sudah difilter berdasarkan kategori
-        textIO.getTextTerminal().println("Mendapatkan kategori...");
-        Kategori selectedKategori = ViewUtils.showSelectKategori();
-        textIO.getTextTerminal().resetToBookmark("filter-lowongan");
+        if (listLowongan == null) {
+            // Tampilkan daftar kategori, kemudian tampilkan daftar lowongan yang sudah difilter berdasarkan kategori
+            textIO.getTextTerminal().println("Mendapatkan kategori...");
+            selectedKategori = ViewUtils.showSelectKategori();
+            textIO.getTextTerminal().resetToBookmark("filter-lowongan");
+            listLowongan = lowonganController.listByKategori(selectedKategori);
+        }
 
-        List<Lowongan> listLowongan = lowonganController.listByKategori(selectedKategori);
 
         if (listLowongan.isEmpty()) {
             textIO.getTextTerminal().println("Tidak ada lowongan yang tersedia");
@@ -94,7 +100,6 @@ public class FilterLowonganByKategoriView implements View {
                 break;
             }
         }
-
 
 
         textIO.newStringInputReader().withMinLength(0).read("Tekan <enter> untuk kembali.");

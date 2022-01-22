@@ -20,6 +20,7 @@ public class SearchLowonganView implements View {
     private final LowonganController lowonganController;
     private final TextIO textIO;
     private String query = null;
+    private List<Lowongan> listLowongan;
 
     private SearchLowonganView(View previousView) throws SQLException {
         this.previousView = previousView;
@@ -32,6 +33,7 @@ public class SearchLowonganView implements View {
             instance = new SearchLowonganView(previousView);
         } else {
             instance.query = null;
+            instance.listLowongan = null;
             instance.previousView = previousView;
         }
         return instance;
@@ -65,8 +67,7 @@ public class SearchLowonganView implements View {
         }
 
         View.showHeader("Cari Lowongan", "");
-        List<Lowongan> listLowongan = lowonganController.search(query);
-
+        listLowongan = lowonganController.search(query);
 
         if (listLowongan.isEmpty()) {
             textIO.getTextTerminal().println("Tidak ada lowongan dengan kata kunci '" + query + "'.");
