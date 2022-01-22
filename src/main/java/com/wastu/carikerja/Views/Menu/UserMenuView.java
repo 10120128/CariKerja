@@ -4,6 +4,7 @@ import com.wastu.carikerja.Helpers.SessionHelper;
 import com.wastu.carikerja.Utils;
 import com.wastu.carikerja.Views.Item.Lowongan.FilterLowonganByKategoriView;
 import com.wastu.carikerja.Views.Item.Lowongan.ListLowonganView;
+import com.wastu.carikerja.Views.Item.Lowongan.SearchLowonganView;
 import com.wastu.carikerja.Views.MainMenuView;
 import com.wastu.carikerja.Views.View;
 import org.beryx.textio.TextIO;
@@ -64,8 +65,7 @@ public class UserMenuView implements View {
             case 1:
                 ListLowonganView.getInstance(this).show();
             case 2:
-                // TODO: Cari lowongan
-                throw new Exception("Cari lowongan belum tersedia");
+                SearchLowonganView.getInstance(this).show();
             case 3:
                 FilterLowonganByKategoriView.getInstance(this).show();
             case 4:

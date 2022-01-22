@@ -11,7 +11,6 @@ import org.beryx.textio.TextIoFactory;
 public class Main {
 
     public static void main(String[] args) {
-        //TODO : Search lowongan
         //Todo : Loading indikator saat meload table
         //TODO : Semua menu dan fitur bisa kembali
         try {

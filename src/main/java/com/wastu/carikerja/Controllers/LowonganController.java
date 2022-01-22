@@ -64,6 +64,9 @@ public class LowonganController {
         return lowonganDao.queryForEq("kategori_id", kategori.getId());
     }
 
+    public List<Lowongan> search(String keyword) throws SQLException {
+        return lowonganDao.queryBuilder().where().like("judul", "%" + keyword + "%").query();
+    }
 
     public void update(Lowongan lowongan) throws SQLException {
         lowonganDao.update(lowongan);

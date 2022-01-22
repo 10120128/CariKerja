@@ -4,11 +4,9 @@ import com.github.freva.asciitable.AsciiTable;
 import com.github.freva.asciitable.Column;
 import com.github.freva.asciitable.HorizontalAlign;
 import com.wastu.carikerja.Controllers.LowonganController;
-import com.wastu.carikerja.Models.Kategori;
 import com.wastu.carikerja.Models.Lowongan;
 import com.wastu.carikerja.Utils;
 import com.wastu.carikerja.Views.View;
-import com.wastu.carikerja.Views.ViewUtils;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 
@@ -16,47 +14,63 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 
-public class FilterLowonganByKategoriView implements View {
-    private static FilterLowonganByKategoriView instance;
+public class SearchLowonganView implements View {
+    private static SearchLowonganView instance;
     private View previousView;
     private final LowonganController lowonganController;
     private final TextIO textIO;
+    private String query = null;
 
-    private FilterLowonganByKategoriView(View previousView) throws SQLException {
+    private SearchLowonganView(View previousView) throws SQLException {
         this.previousView = previousView;
         this.lowonganController = LowonganController.getInstance();
         this.textIO = TextIoFactory.getTextIO();
     }
 
-    public static synchronized FilterLowonganByKategoriView getInstance(View previousView) throws SQLException {
+    public static synchronized SearchLowonganView getInstance(View previousView) throws SQLException {
         if (instance == null) {
-            instance = new FilterLowonganByKategoriView(previousView);
-        }else{
+            instance = new SearchLowonganView(previousView);
+        } else {
+            instance.query = null;
             instance.previousView = previousView;
         }
         return instance;
     }
 
     /**
-     * Menampilkan daftar lowongan yang sudah difilter berdasarkan kategori, akan kembali ke view sebelumnya jika user memilih untuk kembali.
+     * Menampilkan daftar lowongan berdasarkan query yang diberikan oleh user, akan kembali ke view sebelumnya jika user memilih untuk kembali.
      *
      * @throws Exception jika terjadi error
      */
     @Override
     public void show() throws Exception {
-        textIO.getTextTerminal().setBookmark("filter-lowongan");
+        textIO.getTextTerminal().setBookmark("search-lowongan");
 
-        // Tampilkan daftar kategori, kemudian tampilkan daftar lowongan yang sudah difilter berdasarkan kategori
-        textIO.getTextTerminal().println("Mendapatkan kategori...");
-        Kategori selectedKategori = ViewUtils.showSelectKategori();
-        textIO.getTextTerminal().resetToBookmark("filter-lowongan");
 
-        List<Lowongan> listLowongan = lowonganController.listByKategori(selectedKategori);
+        while (true) {
+            textIO.getTextTerminal().resetToBookmark("search-lowongan");
+            if (query != null && !query.isBlank()) {
+                break;
+            }
+
+            View.showHeader("Cari Lowongan", "");
+            query = textIO.newStringInputReader().withMinLength(0).read("Masukan kata kunci pencarian: ");
+            if (query.isBlank()) {
+                Utils.showMessageConfirmation("Kata kunci pencarian tidak boleh kosong", textIO);
+                continue;
+            }
+
+            textIO.getTextTerminal().resetToBookmark("search-lowongan");
+            break;
+        }
+
+        View.showHeader("Cari Lowongan", "");
+        List<Lowongan> listLowongan = lowonganController.search(query);
+
 
         if (listLowongan.isEmpty()) {
-            textIO.getTextTerminal().println("Tidak ada lowongan yang tersedia");
+            textIO.getTextTerminal().println("Tidak ada lowongan dengan kata kunci '" + query + "'.");
         } else {
-            View.showHeader("Daftar Lowongan", "Kategori: " + selectedKategori.getNama());
             textIO.getTextTerminal().println(AsciiTable.getTable(listLowongan, Arrays.asList(
                     new Column().header("Id").headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.LEFT).with(lowongan -> Long.toString(lowongan.getId())),
                     new Column().header("Judul").headerAlign(HorizontalAlign.CENTER).dataAlign(HorizontalAlign.LEFT).with(lowongan -> Utils.toElipsis(lowongan.getJudul(), 40)),
@@ -89,16 +103,14 @@ public class FilterLowonganByKategoriView implements View {
                 }
 
                 // Jika lowongan ditemukan, tampilkan detail lowongan
-                textIO.getTextTerminal().resetToBookmark("filter-lowongan");
+                textIO.getTextTerminal().resetToBookmark("search-lowongan");
                 DetailLowonganView.getInstance(this, lowongan).show();
                 break;
             }
         }
 
-
-
         textIO.newStringInputReader().withMinLength(0).read("Tekan <enter> untuk kembali.");
-        textIO.getTextTerminal().resetToBookmark("filter-lowongan");
+        textIO.getTextTerminal().resetToBookmark("search-lowongan");
         previousView.show();
     }
 }
