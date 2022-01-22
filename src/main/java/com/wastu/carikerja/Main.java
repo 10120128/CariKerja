@@ -17,38 +17,26 @@ public class Main {
     public static void main(String[] args) {
         TextIO mainTextIO = TextIoFactory.getTextIO();
         mainTextIO.getTextTerminal().setBookmark("main-class");
-        while (true) {
-            try {
-                mainTextIO.getTextTerminal().resetToBookmark("main-class");
-
-                // Lazy loading
-                mainTextIO.getTextTerminal().setBookmark("main");
-                Utils.showLoading(mainTextIO);
-                DatabaseHelper.getInstance();
-                KategoriController.getInstance();
-                LowonganController.getInstance();
-                UserController.getInstance();
-                mainTextIO.getTextTerminal().resetToBookmark("main");
-
-                MainMenuView cariKerja = MainMenuView.getInstance();
-                cariKerja.show();
-
-                break;
-            } catch (CommunicationsException | CommunicationException e) {
-                Utils.showMessageConfirmation("Gagal terhubung ke database, silahkan cek koneksi internet anda", mainTextIO);
-            } catch (SQLException e) {
-                Utils.showMessageConfirmation("Terjadi kesalahan di database.\n" + e.getMessage(), mainTextIO);
-            } catch (Exception e) {
-                Utils.showMessageConfirmation("Terjadi kesalahan.\n" + e.getMessage(), mainTextIO);
-            }
-        }
-
-        // Dispose komponen yang sudah tidak dipakai.
         try {
-            DatabaseHelper.getInstance().closeConnectionSource();
+            mainTextIO.getTextTerminal().resetToBookmark("main-class");
+
+            // Lazy loading
+            mainTextIO.getTextTerminal().setBookmark("main");
+            Utils.showLoading(mainTextIO);
+            DatabaseHelper.getInstance();
+            KategoriController.getInstance();
+            LowonganController.getInstance();
+            UserController.getInstance();
+            mainTextIO.getTextTerminal().resetToBookmark("main");
+
+            MainMenuView cariKerja = MainMenuView.getInstance();
+            cariKerja.show();
+        } catch (CommunicationsException | CommunicationException e) {
+            Utils.showMessageConfirmation("Gagal terhubung ke database, silahkan cek koneksi internet anda", mainTextIO);
+        } catch (SQLException e) {
+            Utils.showMessageConfirmation("Terjadi kesalahan di database.\n" + e.getMessage(), mainTextIO);
         } catch (Exception e) {
-            e.printStackTrace();
+            Utils.showMessageConfirmation("Terjadi kesalahan.\n" + e.getMessage(), mainTextIO);
         }
-        mainTextIO.dispose();
     }
 }
