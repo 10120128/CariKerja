@@ -39,7 +39,6 @@ public class MainMenuView implements View{
             textIO.getTextTerminal().resetToBookmark("menu");
 
             // Panggil menu
-            try {
                 switch (selection) {
                     case 1:
                         LoginView.getInstance(this).show();
@@ -51,11 +50,6 @@ public class MainMenuView implements View{
                         handleExit();
                         break;
                 }
-            } catch (Exception e) {
-                // Jika terjadi kesalahan maka ulang kembali menu utama.
-                Utils.showMessageConfirmation("Terjadi kesalahan:\n" + e.getMessage(), textIO);
-                continue;
-            }
 
 
             // Cek status login, apabila terdeteksi logout maka kembali ke menu utama.
