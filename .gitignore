@@ -142,3 +142,7 @@ replay_pid*
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij,java,dotenv
 .idea/dataSources.xml
+target/maven-archiver/pom.properties
+target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+dependency-reduced-pom.xml
