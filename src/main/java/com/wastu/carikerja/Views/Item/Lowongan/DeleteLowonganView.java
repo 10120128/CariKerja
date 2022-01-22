@@ -68,13 +68,13 @@ public class DeleteLowonganView implements View {
             Lowongan lowongan = lowonganController.get(id);
 
             textIO.getTextTerminal().println();
-            textIO.getTextTerminal().println("Id:\n" + lowongan.getId() + "\n");
-            textIO.getTextTerminal().println("Judul:\n" + lowongan.getJudul()+ "\n");
-            textIO.getTextTerminal().println("Deskripsi:\n" + lowongan.getDeskripsi() + "\n");
-            textIO.getTextTerminal().println("Kategori:\n" + lowongan.getKategori().getNama() + "\n");
-            textIO.getTextTerminal().println("Tempat:\n" + lowongan.getTempat() + "\n");
-            textIO.getTextTerminal().println("Perusahaan:\n" + lowongan.getPerusahaan() + "\n");
-            textIO.getTextTerminal().println("Tanggal Posting:\n" + lowongan.getTanggalPosting() + "\n");
+            textIO.getTextTerminal().println("Id:\n  " + lowongan.getId() + "\n");
+            textIO.getTextTerminal().println("Judul:\n  " + lowongan.getJudul()+ "\n");
+            textIO.getTextTerminal().println("Deskripsi:\n  " + lowongan.getDeskripsi() + "\n");
+            textIO.getTextTerminal().println("Kategori:\n  " + lowongan.getKategori().getNama() + "\n");
+            textIO.getTextTerminal().println("Tempat:\n  " + lowongan.getTempat() + "\n");
+            textIO.getTextTerminal().println("Perusahaan:\n  " + lowongan.getPerusahaan() + "\n");
+            textIO.getTextTerminal().println("Tanggal Posting:\n  " + lowongan.getTanggalPosting() + "\n");
 
             boolean confirmation = textIO.newBooleanInputReader().withDefaultValue(false).read("Apakah anda yakin ingin menghapus lowongan ini?");
 
