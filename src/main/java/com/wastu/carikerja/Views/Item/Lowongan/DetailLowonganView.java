@@ -42,22 +42,22 @@ public class DetailLowonganView implements View {
 
         // Tampilkan detail lowongan
         textIO.getTextTerminal().println("Judul:");
-        textIO.getTextTerminal().println(lowongan.getJudul());
+        textIO.getTextTerminal().println("  "+ lowongan.getJudul());
         textIO.getTextTerminal().println();
         textIO.getTextTerminal().println("Deskripsi:");
-        textIO.getTextTerminal().println(lowongan.getDeskripsi());
+        textIO.getTextTerminal().println("  "+lowongan.getDeskripsi());
         textIO.getTextTerminal().println();
         textIO.getTextTerminal().println("Kategori:");
-        textIO.getTextTerminal().println(lowongan.getKategori().getNama());
+        textIO.getTextTerminal().println("  "+lowongan.getKategori().getNama());
         textIO.getTextTerminal().println();
         textIO.getTextTerminal().println("Perusahaan:");
-        textIO.getTextTerminal().println(lowongan.getPerusahaan());
+        textIO.getTextTerminal().println("  "+lowongan.getPerusahaan());
         textIO.getTextTerminal().println();
         textIO.getTextTerminal().println("Tempat:");
-        textIO.getTextTerminal().println(lowongan.getTempat());
+        textIO.getTextTerminal().println("  "+lowongan.getTempat());
         textIO.getTextTerminal().println();
         textIO.getTextTerminal().println("Tanggal:");
-        textIO.getTextTerminal().println(lowongan.getTanggalPosting());
+        textIO.getTextTerminal().println("  "+lowongan.getTanggalPosting());
 
         textIO.getTextTerminal().println();
         textIO.newStringInputReader().withMinLength(0).read("Tekan <enter> untuk kembali.");
