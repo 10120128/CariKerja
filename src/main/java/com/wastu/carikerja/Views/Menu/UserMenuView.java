@@ -33,7 +33,7 @@ public class UserMenuView implements View {
         textIO.getTextTerminal().setBookmark("user-menu");
         while (true) {
             View.showHeader("Menu User", "Selamat Datang " + SessionHelper.getInstance().getUser().getNama() + "!\n");
-            textIO.getTextTerminal().println("1. Daftar Lowongan");
+            textIO.getTextTerminal().println("1. lihat Daftar Lowongan");
             textIO.getTextTerminal().println("2. Cari Lowongan");
             textIO.getTextTerminal().println("3. Filter Lowongan (Kategori)");
             textIO.getTextTerminal().println("4. Logout");
