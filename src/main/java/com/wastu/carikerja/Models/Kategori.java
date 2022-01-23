@@ -2,7 +2,6 @@ package com.wastu.carikerja.Models;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import com.wastu.carikerja.Enums.UserRole;
 
 @DatabaseTable(tableName = "kategori")
 public class Kategori {

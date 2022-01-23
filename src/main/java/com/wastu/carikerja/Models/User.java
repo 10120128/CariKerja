@@ -3,9 +3,6 @@ package com.wastu.carikerja.Models;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import com.wastu.carikerja.Enums.UserRole;
-import com.wastu.carikerja.Utils;
-
-import java.security.NoSuchAlgorithmException;
 
 @DatabaseTable(tableName = "user")
 public class User {

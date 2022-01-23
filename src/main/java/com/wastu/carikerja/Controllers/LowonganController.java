@@ -7,7 +7,6 @@ import com.j256.ormlite.table.TableUtils;
 import com.wastu.carikerja.Helpers.DatabaseHelper;
 import com.wastu.carikerja.Models.Kategori;
 import com.wastu.carikerja.Models.Lowongan;
-import com.wastu.carikerja.Models.User;
 
 import java.sql.SQLException;
 import java.util.List;
