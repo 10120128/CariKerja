@@ -105,7 +105,7 @@ public class RegisterView implements View {
             }
 
             // Konfirmasi
-            boolean confirmation = textIO.newBooleanInputReader().withDefaultValue(true).read("Apakah data yang anda masukkan sudah benar? (Y/N)");
+            boolean confirmation = textIO.newBooleanInputReader().withDefaultValue(true).read("Apakah data yang anda masukkan sudah benar?");
             if (!confirmation) {
                 textIO.getTextTerminal().resetToBookmark("register");
                 continue;
