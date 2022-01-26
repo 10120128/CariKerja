@@ -33,6 +33,7 @@ public class ListLowonganView implements View {
             instance = new ListLowonganView(previousView);
         } else {
             instance.previousView = previousView;
+            instance.listLowongan = null;
         }
         return instance;
     }
