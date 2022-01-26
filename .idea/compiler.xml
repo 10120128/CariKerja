@@ -6,7 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="CariKerja" />
+        <module name="PBO-PBO4-UAS-CariKerja-10120128-10120143-10120155" />
       </profile>
     </annotationProcessing>
   </component>

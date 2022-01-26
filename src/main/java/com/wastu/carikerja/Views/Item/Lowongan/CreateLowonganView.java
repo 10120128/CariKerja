@@ -5,10 +5,9 @@ import com.wastu.carikerja.Controllers.LowonganController;
 import com.wastu.carikerja.Models.Kategori;
 import com.wastu.carikerja.Models.Lowongan;
 import com.wastu.carikerja.Utils;
-import com.wastu.carikerja.Views.ViewUtils;
 import com.wastu.carikerja.Views.View;
+import com.wastu.carikerja.Views.ViewUtils;
 import org.beryx.textio.TextIO;
-import org.beryx.textio.TextIoFactory;
 
 import java.sql.SQLException;
 import java.util.Date;
@@ -24,13 +23,14 @@ public class CreateLowonganView implements View {
         this.previousView = previousView;
         this.lowonganController = LowonganController.getInstance();
         this.kategoriController = KategoriController.getInstance();
-        this.textIO = ViewUtils.getInstance().getTextIO();;
+        this.textIO = ViewUtils.getInstance().getTextIO();
+        ;
     }
 
     public static synchronized CreateLowonganView getInstance(View previousView) throws SQLException {
         if (instance == null) {
             instance = new CreateLowonganView(previousView);
-        }else{
+        } else {
             instance.previousView = previousView;
         }
         return instance;

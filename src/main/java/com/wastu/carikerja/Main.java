@@ -8,11 +8,8 @@ import com.wastu.carikerja.Helpers.DatabaseHelper;
 import com.wastu.carikerja.Views.MainMenuView;
 import com.wastu.carikerja.Views.ViewUtils;
 import org.beryx.textio.TextIO;
-import org.beryx.textio.TextIoFactory;
-import org.beryx.textio.swing.SwingTextTerminal;
 
 import javax.naming.CommunicationException;
-import java.awt.*;
 import java.sql.SQLException;
 
 public class Main {

@@ -6,7 +6,6 @@ import com.wastu.carikerja.Utils;
 import com.wastu.carikerja.Views.View;
 import com.wastu.carikerja.Views.ViewUtils;
 import org.beryx.textio.TextIO;
-import org.beryx.textio.TextIoFactory;
 
 import java.sql.SQLException;
 
@@ -19,13 +18,14 @@ public class DeleteKategoriView implements View {
     private DeleteKategoriView(View previousView) throws SQLException {
         this.previousView = previousView;
         this.kategoriController = KategoriController.getInstance();
-        this.textIO = ViewUtils.getInstance().getTextIO();;
+        this.textIO = ViewUtils.getInstance().getTextIO();
+        ;
     }
 
     public static synchronized DeleteKategoriView getInstance(View previousView) throws SQLException {
         if (instance == null) {
             instance = new DeleteKategoriView(previousView);
-        }else{
+        } else {
             instance.previousView = previousView;
         }
         return instance;

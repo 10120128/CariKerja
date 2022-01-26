@@ -1,12 +1,12 @@
 # CariKerja
-Carikerja adalah aplikasi console lowongan pekerjaan yang dibuat dengan Java dan MySQL. Aplikasi ini dibuat untuk memenuhi tugas PBO.
 
-
+Carikerja adalah aplikasi console lowongan pekerjaan yang dibuat dengan Java dan MySQL. Aplikasi ini dibuat untuk
+memenuhi tugas PBO.
 
 https://user-images.githubusercontent.com/81973750/151104577-499aaae4-9bf7-493d-9e48-07f511d36509.mp4
 
-
 # Fitur
+
 - Login, Register, dan Logout
 - Menampilkan daftar lowongan pekerjaan
 - Menampilkan detail lowongan pekerjaan
@@ -16,12 +16,15 @@ https://user-images.githubusercontent.com/81973750/151104577-499aaae4-9bf7-493d-
 - Hapus, ubah dan menampilkan user
 
 # Menjalankan Aplikasi
+
 Untuk menjalankan aplikasi, pastikan anda telah menginstal komponen yang dibutuhkan:
+
 - JDK 11
 - Apache Maven
 - MySQL
 
 ## Dengan IntelliJ
+
 1. Clone repository ini dengan cara:
     ```bash
     $ git clone https://github.com/10120128/CariKerja
@@ -32,6 +35,7 @@ Untuk menjalankan aplikasi, pastikan anda telah menginstal komponen yang dibutuh
 5. Jalankan aplikasi
 
 ## Cara manual
+
 1. Clone repository ini dengan cara:
     ```bash
     $ git clone https://github.com/10120128/CariKerja 
@@ -45,11 +49,15 @@ Untuk menjalankan aplikasi, pastikan anda telah menginstal komponen yang dibutuh
 5. Jalankan aplikasi
 
 # Anggota Kelompok
+
 10120128, 10120143, 10120155
 
 # Lisensi
+
 [Apache License 2.0](LICENSE)
+
 ## Library
+
 - [ormlite](https://ormlite.com/) ISC
 - [text-io](https://github.com/beryx/text-io) Apache License v2.0
 - [ascii-table](https://github.com/freva/ascii-table) MIT

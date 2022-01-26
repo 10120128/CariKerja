@@ -8,7 +8,6 @@ import com.wastu.carikerja.Views.Menu.UserMenuView;
 import com.wastu.carikerja.Views.View;
 import com.wastu.carikerja.Views.ViewUtils;
 import org.beryx.textio.TextIO;
-import org.beryx.textio.TextIoFactory;
 
 import java.sql.SQLException;
 
@@ -19,7 +18,8 @@ public class LoginView implements View {
     private View previousView;
 
     private LoginView(View previousView) throws SQLException {
-        textIO = ViewUtils.getInstance().getTextIO();;
+        textIO = ViewUtils.getInstance().getTextIO();
+        ;
         userController = UserController.getInstance();
         this.previousView = previousView;
     }
@@ -37,7 +37,8 @@ public class LoginView implements View {
     public void show() throws Exception {
         textIO.getTextTerminal().setBookmark("login");
         while (true) {
-            View.showHeader("Login", "Silahkan masukkan informasi yang dibutuhkan. Ketik <exit> untuk kembali.");
+            View.showHeader("Login", "Silahkan masukkan informasi yang dibutuhkan. Ketik <exit> untuk kembali.\n" +
+                    "Email demo admin\t: admin@admin.com\nPassword\t\t: admin123");
 
             String email;
             textIO.getTextTerminal().setBookmark("email");

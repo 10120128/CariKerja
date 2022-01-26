@@ -22,13 +22,14 @@ public class ListKategoriView implements View {
     private ListKategoriView(View previousView) throws SQLException {
         this.previousView = previousView;
         this.kategoriController = KategoriController.getInstance();
-        this.textIO = ViewUtils.getInstance().getTextIO();;
+        this.textIO = ViewUtils.getInstance().getTextIO();
+        ;
     }
 
     public static synchronized ListKategoriView getInstance(View previousView) throws SQLException {
         if (instance == null) {
             instance = new ListKategoriView(previousView);
-        }else{
+        } else {
             instance.previousView = previousView;
         }
         return instance;

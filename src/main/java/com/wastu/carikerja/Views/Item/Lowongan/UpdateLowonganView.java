@@ -31,13 +31,14 @@ public class UpdateLowonganView implements View {
         this.previousView = previousView;
         this.lowonganController = LowonganController.getInstance();
         this.kategoriController = KategoriController.getInstance();
-        this.textIO = ViewUtils.getInstance().getTextIO();;
+        this.textIO = ViewUtils.getInstance().getTextIO();
+        ;
     }
 
     public static synchronized UpdateLowonganView getInstance(View previousView) throws SQLException {
         if (instance == null) {
             instance = new UpdateLowonganView(previousView);
-        }else{
+        } else {
             instance.previousView = previousView;
         }
         return instance;
@@ -196,9 +197,9 @@ public class UpdateLowonganView implements View {
                 textIO.getTextTerminal().println("Kategori:");
                 textIO.getTextTerminal().println("> Id\t: " + kategori.getId());
                 textIO.getTextTerminal().println("> Nama\t: " + kategori.getNama());
-                if(kategori.getId() == lowongan.getKategori().getId()){
+                if (kategori.getId() == lowongan.getKategori().getId()) {
                     boolean input = textIO.newBooleanInputReader().withDefaultValue(false).read("Ubah kategori?");
-                    if(input) {
+                    if (input) {
                         textIO.getTextTerminal().println("Mengarahkan ke menu pilih kategori...");
                         kategori = showSelectKategori();
                         continue;
@@ -223,7 +224,7 @@ public class UpdateLowonganView implements View {
                 // validasi tanggal
                 try {
                     tanggalPosting = new SimpleDateFormat("dd/MM/yyyy").parse(tanggalStr);
-                }catch (ParseException e) {
+                } catch (ParseException e) {
                     Utils.showMessageConfirmation("Format tanggal salah", textIO);
                     continue;
                 }

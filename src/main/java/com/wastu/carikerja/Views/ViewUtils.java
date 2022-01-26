@@ -18,21 +18,21 @@ public class ViewUtils {
     private SwingTextTerminal mainTerm;
     private TextIO textIO;
 
-    private ViewUtils(){
+    private ViewUtils() {
         mainTerm = new SwingTextTerminal();
         mainTerm.init();
         textIO = new TextIO(mainTerm);
         mainTerm.getFrame().setPreferredSize(new Dimension(900, 500));
     }
 
-    public static synchronized ViewUtils  getInstance() {
+    public static synchronized ViewUtils getInstance() {
         if (instance == null) {
             instance = new ViewUtils();
         }
         return instance;
     }
 
-    public TextIO getTextIO(){
+    public TextIO getTextIO() {
         return textIO;
     }
 

@@ -8,7 +8,6 @@ import com.wastu.carikerja.Models.User;
 import com.wastu.carikerja.Views.View;
 import com.wastu.carikerja.Views.ViewUtils;
 import org.beryx.textio.TextIO;
-import org.beryx.textio.TextIoFactory;
 
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -23,13 +22,14 @@ public class ListUserView implements View {
     private ListUserView(View previousView) throws SQLException {
         this.previousView = previousView;
         this.userController = UserController.getInstance();
-        this.textIO = ViewUtils.getInstance().getTextIO();;
+        this.textIO = ViewUtils.getInstance().getTextIO();
+        ;
     }
 
     public static synchronized ListUserView getInstance(View previousView) throws SQLException {
         if (instance == null) {
             instance = new ListUserView(previousView);
-        }else{
+        } else {
             instance.previousView = previousView;
         }
         return instance;

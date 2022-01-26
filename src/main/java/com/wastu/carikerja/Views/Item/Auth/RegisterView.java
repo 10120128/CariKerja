@@ -8,7 +8,6 @@ import com.wastu.carikerja.Views.Menu.UserMenuView;
 import com.wastu.carikerja.Views.View;
 import com.wastu.carikerja.Views.ViewUtils;
 import org.beryx.textio.TextIO;
-import org.beryx.textio.TextIoFactory;
 
 import java.sql.SQLException;
 
@@ -19,15 +18,16 @@ public class RegisterView implements View {
     private final UserController userController;
 
     private RegisterView(View previousView) throws SQLException {
-        textIO = ViewUtils.getInstance().getTextIO();;
+        textIO = ViewUtils.getInstance().getTextIO();
+        ;
         this.previousView = previousView;
         userController = UserController.getInstance();
     }
 
     public static synchronized RegisterView getInstance(View previousView) throws SQLException {
-        if(instance == null){
+        if (instance == null) {
             instance = new RegisterView(previousView);
-        }else{
+        } else {
             instance.previousView = previousView;
         }
         return instance;
@@ -67,7 +67,7 @@ public class RegisterView implements View {
             while (true) {
                 email = textIO.newStringInputReader().withMinLength(0).read("Masukkan email\t\t:");
 
-                if(email.equalsIgnoreCase("exit")){
+                if (email.equalsIgnoreCase("exit")) {
                     textIO.getTextTerminal().resetToBookmark("register");
                     previousView.show();
                 }
@@ -85,7 +85,7 @@ public class RegisterView implements View {
             while (true) {
                 password = textIO.newStringInputReader().withMinLength(0).withInputMasking(true).read("Masukkan password\t:");
 
-                if(password.equalsIgnoreCase("exit")){
+                if (password.equalsIgnoreCase("exit")) {
                     textIO.getTextTerminal().resetToBookmark("register");
                     previousView.show();
                 }

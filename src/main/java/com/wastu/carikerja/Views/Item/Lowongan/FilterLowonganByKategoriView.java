@@ -10,7 +10,6 @@ import com.wastu.carikerja.Utils;
 import com.wastu.carikerja.Views.View;
 import com.wastu.carikerja.Views.ViewUtils;
 import org.beryx.textio.TextIO;
-import org.beryx.textio.TextIoFactory;
 
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -27,7 +26,8 @@ public class FilterLowonganByKategoriView implements View {
     private FilterLowonganByKategoriView(View previousView) throws SQLException {
         this.previousView = previousView;
         this.lowonganController = LowonganController.getInstance();
-        this.textIO = ViewUtils.getInstance().getTextIO();;
+        this.textIO = ViewUtils.getInstance().getTextIO();
+        ;
     }
 
     public static synchronized FilterLowonganByKategoriView getInstance(View previousView) throws SQLException {

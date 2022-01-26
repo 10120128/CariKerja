@@ -71,7 +71,7 @@ public class User {
         return role;
     }
 
-    public boolean isAdmin(){
+    public boolean isAdmin() {
         return getRole() == UserRole.ADMIN;
     }
 

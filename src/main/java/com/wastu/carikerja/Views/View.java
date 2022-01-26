@@ -1,7 +1,6 @@
 package com.wastu.carikerja.Views;
 
 import org.beryx.textio.TextIO;
-import org.beryx.textio.TextIoFactory;
 
 public interface View {
 
@@ -10,12 +9,13 @@ public interface View {
     /**
      * Menampilkan header beserta sub menu yang sedang ditampilkan.
      */
-    static void showHeader(String title, String subtitle){
+    static void showHeader(String title, String subtitle) {
         //TODO: Ganti header agar lebih menarik
-        TextIO textIO = ViewUtils.getInstance().getTextIO();;
+        TextIO textIO = ViewUtils.getInstance().getTextIO();
+        ;
         textIO.getTextTerminal().println("Halaman: " + title);
 
-        if(!subtitle.isBlank()){
+        if (!subtitle.isBlank()) {
             textIO.getTextTerminal().println(subtitle);
         }
 

@@ -6,12 +6,13 @@ import com.wastu.carikerja.Views.Item.Auth.LoginView;
 import com.wastu.carikerja.Views.Item.Auth.RegisterView;
 import org.beryx.textio.TextIO;
 
-public class MainMenuView implements View{
+public class MainMenuView implements View {
     private static MainMenuView instance;
     private final TextIO textIO;
 
     private MainMenuView() {
-        this.textIO = ViewUtils.getInstance().getTextIO();;
+        this.textIO = ViewUtils.getInstance().getTextIO();
+        ;
     }
 
     public static synchronized MainMenuView getInstance() {
@@ -36,17 +37,17 @@ public class MainMenuView implements View{
             textIO.getTextTerminal().resetToBookmark("menu");
 
             // Panggil menu
-                switch (selection) {
-                    case 1:
-                        LoginView.getInstance(this).show();
-                        break;
-                    case 2:
-                        RegisterView.getInstance(this).show();
-                        break;
-                    case 3:
-                        handleExit();
-                        break;
-                }
+            switch (selection) {
+                case 1:
+                    LoginView.getInstance(this).show();
+                    break;
+                case 2:
+                    RegisterView.getInstance(this).show();
+                    break;
+                case 3:
+                    handleExit();
+                    break;
+            }
 
 
             // Cek status login, apabila terdeteksi logout maka kembali ke menu utama.

@@ -9,7 +9,6 @@ import com.wastu.carikerja.Views.Submenu.ManageUserSubmenu;
 import com.wastu.carikerja.Views.View;
 import com.wastu.carikerja.Views.ViewUtils;
 import org.beryx.textio.TextIO;
-import org.beryx.textio.TextIoFactory;
 
 public class AdminMenuView implements View {
     private static AdminMenuView instance;
@@ -17,14 +16,15 @@ public class AdminMenuView implements View {
     private View previousView;
 
     private AdminMenuView(View previousView) {
-        textIO = ViewUtils.getInstance().getTextIO();;
+        textIO = ViewUtils.getInstance().getTextIO();
+        ;
         this.previousView = previousView;
     }
 
     public static synchronized AdminMenuView getInstance(View previousView) {
         if (instance == null) {
             instance = new AdminMenuView(previousView);
-        }else{
+        } else {
             instance.previousView = previousView;
         }
         return instance;

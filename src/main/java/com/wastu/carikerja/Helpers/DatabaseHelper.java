@@ -1,6 +1,5 @@
 package com.wastu.carikerja.Helpers;
 
-import com.j256.ormlite.db.DatabaseType;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
 import com.wastu.carikerja.Config;

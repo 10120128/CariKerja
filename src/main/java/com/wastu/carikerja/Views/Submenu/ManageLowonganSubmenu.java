@@ -8,7 +8,6 @@ import com.wastu.carikerja.Views.Item.Lowongan.UpdateLowonganView;
 import com.wastu.carikerja.Views.View;
 import com.wastu.carikerja.Views.ViewUtils;
 import org.beryx.textio.TextIO;
-import org.beryx.textio.TextIoFactory;
 
 public class ManageLowonganSubmenu implements View {
     private static ManageLowonganSubmenu instance;
@@ -16,7 +15,8 @@ public class ManageLowonganSubmenu implements View {
     private final View previousView;
 
     private ManageLowonganSubmenu(View previousView) {
-        textIO = ViewUtils.getInstance().getTextIO();;
+        textIO = ViewUtils.getInstance().getTextIO();
+        ;
         this.previousView = previousView;
     }
 

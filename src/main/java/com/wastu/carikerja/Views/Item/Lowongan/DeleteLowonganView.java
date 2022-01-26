@@ -6,7 +6,6 @@ import com.wastu.carikerja.Utils;
 import com.wastu.carikerja.Views.View;
 import com.wastu.carikerja.Views.ViewUtils;
 import org.beryx.textio.TextIO;
-import org.beryx.textio.TextIoFactory;
 
 import java.sql.SQLException;
 
@@ -19,13 +18,14 @@ public class DeleteLowonganView implements View {
     private DeleteLowonganView(View previousView) throws SQLException {
         this.previousView = previousView;
         this.lowonganController = LowonganController.getInstance();
-        this.textIO = ViewUtils.getInstance().getTextIO();;
+        this.textIO = ViewUtils.getInstance().getTextIO();
+        ;
     }
 
     public static synchronized DeleteLowonganView getInstance(View previousView) throws SQLException {
         if (instance == null) {
             instance = new DeleteLowonganView(previousView);
-        }else{
+        } else {
             instance.previousView = previousView;
         }
         return instance;
@@ -70,7 +70,7 @@ public class DeleteLowonganView implements View {
 
             textIO.getTextTerminal().println();
             textIO.getTextTerminal().println("Id:\n  " + lowongan.getId() + "\n");
-            textIO.getTextTerminal().println("Judul:\n  " + lowongan.getJudul()+ "\n");
+            textIO.getTextTerminal().println("Judul:\n  " + lowongan.getJudul() + "\n");
             textIO.getTextTerminal().println("Deskripsi:\n  " + lowongan.getDeskripsi() + "\n");
             textIO.getTextTerminal().println("Kategori:\n  " + lowongan.getKategori().getNama() + "\n");
             textIO.getTextTerminal().println("Tempat:\n  " + lowongan.getTempat() + "\n");

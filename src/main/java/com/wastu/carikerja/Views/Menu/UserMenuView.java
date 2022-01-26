@@ -9,7 +9,6 @@ import com.wastu.carikerja.Views.MainMenuView;
 import com.wastu.carikerja.Views.View;
 import com.wastu.carikerja.Views.ViewUtils;
 import org.beryx.textio.TextIO;
-import org.beryx.textio.TextIoFactory;
 
 public class UserMenuView implements View {
     private static UserMenuView instance;
@@ -17,14 +16,15 @@ public class UserMenuView implements View {
     private View previousView;
 
     private UserMenuView(View previousView) {
-        textIO = ViewUtils.getInstance().getTextIO();;
+        textIO = ViewUtils.getInstance().getTextIO();
+        ;
         this.previousView = previousView;
     }
 
     public static synchronized UserMenuView getInstance(View previousView) {
         if (instance == null) {
             instance = new UserMenuView(previousView);
-        }else{
+        } else {
             instance.previousView = previousView;
         }
         return instance;
