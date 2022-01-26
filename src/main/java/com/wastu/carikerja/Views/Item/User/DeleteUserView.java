@@ -4,6 +4,7 @@ import com.wastu.carikerja.Controllers.UserController;
 import com.wastu.carikerja.Models.User;
 import com.wastu.carikerja.Utils;
 import com.wastu.carikerja.Views.View;
+import com.wastu.carikerja.Views.ViewUtils;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 
@@ -18,7 +19,7 @@ public class DeleteUserView implements View {
     private DeleteUserView(View previousView) throws SQLException {
         this.previousView = previousView;
         this.userController = UserController.getInstance();
-        this.textIO = TextIoFactory.getTextIO();
+        this.textIO = ViewUtils.getInstance().getTextIO();;
     }
 
     public static synchronized DeleteUserView getInstance(View previousView) throws SQLException {

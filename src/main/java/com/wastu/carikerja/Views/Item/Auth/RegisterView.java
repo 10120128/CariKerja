@@ -6,6 +6,7 @@ import com.wastu.carikerja.Models.User;
 import com.wastu.carikerja.Utils;
 import com.wastu.carikerja.Views.Menu.UserMenuView;
 import com.wastu.carikerja.Views.View;
+import com.wastu.carikerja.Views.ViewUtils;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 
@@ -18,7 +19,7 @@ public class RegisterView implements View {
     private final UserController userController;
 
     private RegisterView(View previousView) throws SQLException {
-        textIO = TextIoFactory.getTextIO();
+        textIO = ViewUtils.getInstance().getTextIO();;
         this.previousView = previousView;
         userController = UserController.getInstance();
     }

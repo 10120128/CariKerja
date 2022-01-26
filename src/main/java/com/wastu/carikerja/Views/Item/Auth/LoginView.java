@@ -6,6 +6,7 @@ import com.wastu.carikerja.Utils;
 import com.wastu.carikerja.Views.Menu.AdminMenuView;
 import com.wastu.carikerja.Views.Menu.UserMenuView;
 import com.wastu.carikerja.Views.View;
+import com.wastu.carikerja.Views.ViewUtils;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 
@@ -18,7 +19,7 @@ public class LoginView implements View {
     private View previousView;
 
     private LoginView(View previousView) throws SQLException {
-        textIO = TextIoFactory.getTextIO();
+        textIO = ViewUtils.getInstance().getTextIO();;
         userController = UserController.getInstance();
         this.previousView = previousView;
     }

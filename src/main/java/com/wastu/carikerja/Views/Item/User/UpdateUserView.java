@@ -5,6 +5,7 @@ import com.wastu.carikerja.Enums.UserRole;
 import com.wastu.carikerja.Models.User;
 import com.wastu.carikerja.Utils;
 import com.wastu.carikerja.Views.View;
+import com.wastu.carikerja.Views.ViewUtils;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 
@@ -19,7 +20,7 @@ public class UpdateUserView implements View {
     private UpdateUserView(View previousView) throws SQLException {
         this.previousView = previousView;
         this.userController = UserController.getInstance();
-        this.textIO = TextIoFactory.getTextIO();
+        this.textIO = ViewUtils.getInstance().getTextIO();;
     }
 
     public static synchronized UpdateUserView getInstance(View previousView) throws SQLException {

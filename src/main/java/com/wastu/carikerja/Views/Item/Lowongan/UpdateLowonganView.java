@@ -9,8 +9,8 @@ import com.wastu.carikerja.Models.Kategori;
 import com.wastu.carikerja.Models.Lowongan;
 import com.wastu.carikerja.Utils;
 import com.wastu.carikerja.Views.View;
+import com.wastu.carikerja.Views.ViewUtils;
 import org.beryx.textio.TextIO;
-import org.beryx.textio.TextIoFactory;
 import org.beryx.textio.swing.SwingTextTerminal;
 
 import java.sql.SQLException;
@@ -31,7 +31,7 @@ public class UpdateLowonganView implements View {
         this.previousView = previousView;
         this.lowonganController = LowonganController.getInstance();
         this.kategoriController = KategoriController.getInstance();
-        this.textIO = TextIoFactory.getTextIO();
+        this.textIO = ViewUtils.getInstance().getTextIO();;
     }
 
     public static synchronized UpdateLowonganView getInstance(View previousView) throws SQLException {

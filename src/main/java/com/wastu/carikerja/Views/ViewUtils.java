@@ -9,10 +9,32 @@ import com.wastu.carikerja.Utils;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.swing.SwingTextTerminal;
 
+import java.awt.*;
 import java.util.Arrays;
 import java.util.List;
 
 public class ViewUtils {
+    private static ViewUtils instance;
+    private SwingTextTerminal mainTerm;
+    private TextIO textIO;
+
+    private ViewUtils(){
+        mainTerm = new SwingTextTerminal();
+        mainTerm.init();
+        textIO = new TextIO(mainTerm);
+        mainTerm.getFrame().setPreferredSize(new Dimension(900, 500));
+    }
+
+    public static synchronized ViewUtils  getInstance() {
+        if (instance == null) {
+            instance = new ViewUtils();
+        }
+        return instance;
+    }
+
+    public TextIO getTextIO(){
+        return textIO;
+    }
 
     /**
      * Memunculkan terminal baru agar user dapat memilih kategori. Akan mengembalikan objek kategori yang dipilih.

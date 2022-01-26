@@ -5,6 +5,7 @@ import com.wastu.carikerja.Views.Item.User.DeleteUserView;
 import com.wastu.carikerja.Views.Item.User.ListUserView;
 import com.wastu.carikerja.Views.Item.User.UpdateUserView;
 import com.wastu.carikerja.Views.View;
+import com.wastu.carikerja.Views.ViewUtils;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 
@@ -14,7 +15,7 @@ public class ManageUserSubmenu implements View {
     private final View previousView;
 
     private ManageUserSubmenu(View previousView) {
-        textIO = TextIoFactory.getTextIO();
+        textIO = ViewUtils.getInstance().getTextIO();;
         this.previousView = previousView;
     }
 

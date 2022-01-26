@@ -5,14 +5,13 @@ import com.wastu.carikerja.Utils;
 import com.wastu.carikerja.Views.Item.Auth.LoginView;
 import com.wastu.carikerja.Views.Item.Auth.RegisterView;
 import org.beryx.textio.TextIO;
-import org.beryx.textio.TextIoFactory;
 
 public class MainMenuView implements View{
     private static MainMenuView instance;
     private final TextIO textIO;
 
     private MainMenuView() {
-        this.textIO = TextIoFactory.getTextIO();
+        this.textIO = ViewUtils.getInstance().getTextIO();;
     }
 
     public static synchronized MainMenuView getInstance() {

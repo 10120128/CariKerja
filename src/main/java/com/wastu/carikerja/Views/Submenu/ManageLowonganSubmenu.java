@@ -6,6 +6,7 @@ import com.wastu.carikerja.Views.Item.Lowongan.DeleteLowonganView;
 import com.wastu.carikerja.Views.Item.Lowongan.ListLowonganView;
 import com.wastu.carikerja.Views.Item.Lowongan.UpdateLowonganView;
 import com.wastu.carikerja.Views.View;
+import com.wastu.carikerja.Views.ViewUtils;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 
@@ -15,7 +16,7 @@ public class ManageLowonganSubmenu implements View {
     private final View previousView;
 
     private ManageLowonganSubmenu(View previousView) {
-        textIO = TextIoFactory.getTextIO();
+        textIO = ViewUtils.getInstance().getTextIO();;
         this.previousView = previousView;
     }
 

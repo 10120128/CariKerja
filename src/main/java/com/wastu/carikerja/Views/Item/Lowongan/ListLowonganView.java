@@ -7,6 +7,7 @@ import com.wastu.carikerja.Controllers.LowonganController;
 import com.wastu.carikerja.Models.Lowongan;
 import com.wastu.carikerja.Utils;
 import com.wastu.carikerja.Views.View;
+import com.wastu.carikerja.Views.ViewUtils;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 
@@ -23,7 +24,7 @@ public class ListLowonganView implements View {
     private ListLowonganView(View previousView) throws SQLException {
         this.previousView = previousView;
         this.lowonganController = LowonganController.getInstance();
-        this.textIO = TextIoFactory.getTextIO();
+        this.textIO = ViewUtils.getInstance().getTextIO();;
     }
 
     public static synchronized ListLowonganView getInstance(View previousView) throws SQLException {

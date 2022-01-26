@@ -6,16 +6,21 @@ import com.wastu.carikerja.Controllers.LowonganController;
 import com.wastu.carikerja.Controllers.UserController;
 import com.wastu.carikerja.Helpers.DatabaseHelper;
 import com.wastu.carikerja.Views.MainMenuView;
+import com.wastu.carikerja.Views.ViewUtils;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
+import org.beryx.textio.swing.SwingTextTerminal;
 
 import javax.naming.CommunicationException;
+import java.awt.*;
 import java.sql.SQLException;
 
 public class Main {
 
     public static void main(String[] args) {
-        TextIO mainTextIO = TextIoFactory.getTextIO();
+
+        TextIO mainTextIO = ViewUtils.getInstance().getTextIO();
+
         mainTextIO.getTextTerminal().setBookmark("main-class");
         try {
             mainTextIO.getTextTerminal().resetToBookmark("main-class");

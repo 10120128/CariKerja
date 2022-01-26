@@ -27,7 +27,7 @@ public class FilterLowonganByKategoriView implements View {
     private FilterLowonganByKategoriView(View previousView) throws SQLException {
         this.previousView = previousView;
         this.lowonganController = LowonganController.getInstance();
-        this.textIO = TextIoFactory.getTextIO();
+        this.textIO = ViewUtils.getInstance().getTextIO();;
     }
 
     public static synchronized FilterLowonganByKategoriView getInstance(View previousView) throws SQLException {

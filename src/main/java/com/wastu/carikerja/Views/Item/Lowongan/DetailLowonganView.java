@@ -2,6 +2,7 @@ package com.wastu.carikerja.Views.Item.Lowongan;
 
 import com.wastu.carikerja.Models.Lowongan;
 import com.wastu.carikerja.Views.View;
+import com.wastu.carikerja.Views.ViewUtils;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 
@@ -16,7 +17,7 @@ public class DetailLowonganView implements View {
     private DetailLowonganView(View previousView, Lowongan lowongan) {
         this.previousView = previousView;
         this.lowongan = lowongan;
-        this.textIO = TextIoFactory.getTextIO();
+        this.textIO = ViewUtils.getInstance().getTextIO();;
     }
 
     public static synchronized DetailLowonganView getInstance(View previousView, Lowongan lowongan) throws SQLException {

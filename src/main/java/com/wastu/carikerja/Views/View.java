@@ -12,7 +12,7 @@ public interface View {
      */
     static void showHeader(String title, String subtitle){
         //TODO: Ganti header agar lebih menarik
-        TextIO textIO = TextIoFactory.getTextIO();
+        TextIO textIO = ViewUtils.getInstance().getTextIO();;
         textIO.getTextTerminal().println("Halaman: " + title);
 
         if(!subtitle.isBlank()){

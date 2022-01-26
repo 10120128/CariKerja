@@ -7,6 +7,7 @@ import com.wastu.carikerja.Views.Submenu.ManageKategoriSubmenu;
 import com.wastu.carikerja.Views.Submenu.ManageLowonganSubmenu;
 import com.wastu.carikerja.Views.Submenu.ManageUserSubmenu;
 import com.wastu.carikerja.Views.View;
+import com.wastu.carikerja.Views.ViewUtils;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 
@@ -16,7 +17,7 @@ public class AdminMenuView implements View {
     private View previousView;
 
     private AdminMenuView(View previousView) {
-        textIO = TextIoFactory.getTextIO();
+        textIO = ViewUtils.getInstance().getTextIO();;
         this.previousView = previousView;
     }
 

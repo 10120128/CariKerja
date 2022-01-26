@@ -6,6 +6,7 @@ import com.github.freva.asciitable.HorizontalAlign;
 import com.wastu.carikerja.Controllers.UserController;
 import com.wastu.carikerja.Models.User;
 import com.wastu.carikerja.Views.View;
+import com.wastu.carikerja.Views.ViewUtils;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 
@@ -22,7 +23,7 @@ public class ListUserView implements View {
     private ListUserView(View previousView) throws SQLException {
         this.previousView = previousView;
         this.userController = UserController.getInstance();
-        this.textIO = TextIoFactory.getTextIO();
+        this.textIO = ViewUtils.getInstance().getTextIO();;
     }
 
     public static synchronized ListUserView getInstance(View previousView) throws SQLException {

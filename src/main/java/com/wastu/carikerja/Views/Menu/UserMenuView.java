@@ -7,6 +7,7 @@ import com.wastu.carikerja.Views.Item.Lowongan.ListLowonganView;
 import com.wastu.carikerja.Views.Item.Lowongan.SearchLowonganView;
 import com.wastu.carikerja.Views.MainMenuView;
 import com.wastu.carikerja.Views.View;
+import com.wastu.carikerja.Views.ViewUtils;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 
@@ -16,7 +17,7 @@ public class UserMenuView implements View {
     private View previousView;
 
     private UserMenuView(View previousView) {
-        textIO = TextIoFactory.getTextIO();
+        textIO = ViewUtils.getInstance().getTextIO();;
         this.previousView = previousView;
     }
 

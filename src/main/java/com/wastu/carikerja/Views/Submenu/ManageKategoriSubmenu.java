@@ -6,6 +6,7 @@ import com.wastu.carikerja.Views.Item.Kategori.DeleteKategoriView;
 import com.wastu.carikerja.Views.Item.Kategori.ListKategoriView;
 import com.wastu.carikerja.Views.Item.Kategori.UpdateKategoriView;
 import com.wastu.carikerja.Views.View;
+import com.wastu.carikerja.Views.ViewUtils;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 
@@ -15,7 +16,7 @@ public class ManageKategoriSubmenu implements View {
     private final View previousView;
 
     private ManageKategoriSubmenu(View previousView) {
-        textIO = TextIoFactory.getTextIO();
+        textIO = ViewUtils.getInstance().getTextIO();;
         this.previousView = previousView;
     }
 

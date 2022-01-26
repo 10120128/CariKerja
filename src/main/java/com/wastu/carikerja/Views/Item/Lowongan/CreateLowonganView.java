@@ -24,7 +24,7 @@ public class CreateLowonganView implements View {
         this.previousView = previousView;
         this.lowonganController = LowonganController.getInstance();
         this.kategoriController = KategoriController.getInstance();
-        this.textIO = TextIoFactory.getTextIO();
+        this.textIO = ViewUtils.getInstance().getTextIO();;
     }
 
     public static synchronized CreateLowonganView getInstance(View previousView) throws SQLException {
