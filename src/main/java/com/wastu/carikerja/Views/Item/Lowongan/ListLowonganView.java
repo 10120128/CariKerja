@@ -20,17 +20,18 @@ public class ListLowonganView implements View {
     private View previousView;
     private final LowonganController lowonganController;
     private final TextIO textIO;
+    private List<Lowongan> listLowongan = null;
 
     private ListLowonganView(View previousView) throws SQLException {
         this.previousView = previousView;
         this.lowonganController = LowonganController.getInstance();
-        this.textIO = ViewUtils.getInstance().getTextIO();;
+        this.textIO = ViewUtils.getInstance().getTextIO();
     }
 
     public static synchronized ListLowonganView getInstance(View previousView) throws SQLException {
         if (instance == null) {
             instance = new ListLowonganView(previousView);
-        }else{
+        } else {
             instance.previousView = previousView;
         }
         return instance;
@@ -45,7 +46,11 @@ public class ListLowonganView implements View {
     public void show() throws Exception {
         textIO.getTextTerminal().setBookmark("list-lowongan");
         Utils.showLoading(textIO);
-        List<Lowongan> listLowongan = lowonganController.list();
+
+        if (listLowongan == null) {
+            listLowongan = lowonganController.list();
+        }
+
         textIO.getTextTerminal().resetToBookmark("list-lowongan");
 
         if (listLowongan.isEmpty()) {
