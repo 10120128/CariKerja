@@ -77,11 +77,22 @@ public class MainMenuView implements View{
         textIO.getTextTerminal().setBookmark("main-menu");
         while (true) {
             textIO.getTextTerminal().resetToBookmark("main-menu");
-            textIO.getTextTerminal().println("Selamat Datang!\n");
+            textIO.getTextTerminal().println("Selamat Datang di Aplikasi CariKerja");
+            textIO.getTextTerminal().println("https://github.com/10120128/CariKerja");
+            textIO.getTextTerminal().println("+--------------------------------+");
+            textIO.getTextTerminal().println("Silahkan pilih menu daftar terlebih dahulu jika belum memiliki akun, jika sudah silahkan pilih menu login.\n");
             textIO.getTextTerminal().println("1. Login");
             textIO.getTextTerminal().println("2. Daftar");
             textIO.getTextTerminal().println("3. Keluar");
-            int menu = textIO.newIntInputReader().withDefaultValue(1).read("Pilih menu ");
+            textIO.getTextTerminal().println();
+            String menuStr = textIO.newStringInputReader().withDefaultValue("1").read("Pilih menu ");
+
+            if (!Utils.containsNumberic(menuStr)) {
+                Utils.showMessageConfirmation("Inputan tidak valid", textIO);
+                continue;
+            }
+
+            int menu = Integer.parseInt(menuStr);
 
             if (menu > 3) {
                 Utils.showMessageConfirmation("Menu tidak tersedia", textIO);
