@@ -2,7 +2,9 @@
 Carikerja adalah aplikasi console lowongan pekerjaan yang dibuat dengan Java dan MySQL. Aplikasi ini dibuat untuk memenuhi tugas PBO.
 
 
-https://user-images.githubusercontent.com/87528336/150668327-4883e41b-0c1b-4aa5-97bd-591f9c3a742a.mp4
+
+https://user-images.githubusercontent.com/81973750/151104577-499aaae4-9bf7-493d-9e48-07f511d36509.mp4
+
 
 # Fitur
 - Login, Register, dan Logout
